@@ -10,6 +10,7 @@
   @param {number} [content_aspect_ratio] - Aspect ratio for content images.
   @param {number} [image_border_radius] - Border radius for content images.
   @param {object} [section] - The section object.
+  @param {number} [featured_collections_limit] - Upper limit for featured collection cards (default: as many as fit).
 
   @example
   {% render 'mega-menu-list', parent_link: link, id: 'MegaMenuList-1', grid_columns_count: 6, menu_content_type: 'featured_products' %}
@@ -237,6 +238,11 @@
     endif
 
     assign max_featured_collections = max_collection_columns | divided_by: 2 | floor
+    if featured_collections_limit != blank and featured_collections_limit < max_featured_collections
+      # Fewer cards than would fit: give the freed columns back to the link list
+      assign max_featured_collections = featured_collections_limit
+      assign max_collection_columns = featured_collections_limit | times: 2
+    endif
     assign max_menu_columns = max_menu_columns | minus: max_collection_columns
 
     # tablet breakpoint
