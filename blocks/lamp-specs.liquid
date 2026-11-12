@@ -1,0 +1,91 @@
+{%- doc -%}
+  Technische Daten einer Leuchte aus den Metafeldern (Namespace custom).
+  Leere Felder werden im Shop ausgelassen und im Theme-Editor als Marker angezeigt.
+{%- enddoc -%}
+
+{%- liquid
+  assign p = closest.product
+  assign m = p.metafields.custom
+
+  assign keys = 'lichtstrom,farbtemperatur,leistung,sockel,leuchtmittel,leuchtmittel_im_lieferumfang,dimmbar,ip_schutzart,material,masse,kabellaenge,energieeffizienzklasse,eprel_nummer' | split: ','
+  assign labels = 'Lichtstrom|Farbtemperatur|Leistung|Sockel|Leuchtmittel|Leuchtmittel im Lieferumfang|Dimmbar|IP-Schutzart|Material|Maße|Kabellänge|Energieeffizienzklasse|EPREL-Nummer' | split: '|'
+  assign units = 'lm|K|W||||||||||' | split: '|'
+-%}
+
+<div class="lamp-specs" {{ block.shopify_attributes }}>
+  <dl class="lamp-specs__list">
+    {%- for key in keys -%}
+      {%- liquid
+        assign value = m[key].value
+        assign type = m[key].type
+        assign label = labels[forloop.index0]
+        assign unit = units[forloop.index0]
+      -%}
+      {%- if value != blank or type == 'boolean' and value == false -%}
+        <div class="lamp-specs__row">
+          <dt>{{ label }}</dt>
+          <dd>
+            {%- if type == 'boolean' -%}
+              {%- if value -%}ja{%- else -%}nein{%- endif -%}
+            {%- elsif key == 'eprel_nummer' -%}
+              <a href="https://eprel.ec.europa.eu/qr/{{ value | strip | url_encode }}" target="_blank" rel="noopener">{{ value }}</a>
+            {%- else -%}
+              {{ value }}
+              {%- if unit != blank %} {{ unit }}{% endif -%}
+            {%- endif -%}
+          </dd>
+        </div>
+      {%- elsif request.design_mode -%}
+        <div class="lamp-specs__row">
+          <dt>{{ label }}</dt>
+          <dd><span class="lamp-marker">[[fehlt — custom.{{ key }}]]</span></dd>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </dl>
+</div>
+
+{% stylesheet %}
+  .lamp-specs__list {
+    margin: 0;
+    display: grid;
+  }
+
+  .lamp-specs__row {
+    display: grid;
+    grid-template-columns: minmax(9rem, 40%) 1fr;
+    gap: 16px;
+    padding-block: 10px;
+    border-block-end: 1px solid rgb(var(--color-foreground-rgb) / 0.12);
+  }
+
+  .lamp-specs__row dt {
+    color: rgb(var(--color-foreground-rgb) / 0.7);
+  }
+
+  .lamp-specs__row dd {
+    margin: 0;
+  }
+
+  .lamp-specs__row a {
+    color: inherit;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Technische Daten",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Zeigt die Leuchten-Metafelder (custom.*). Leere Felder erscheinen nur hier im Editor als Marker."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Technische Daten"
+    }
+  ]
+}
+{% endschema %}

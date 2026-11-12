@@ -1,0 +1,41 @@
+{%- doc -%}
+  Lieferzeit pro Produkt aus dem Metafeld custom.lieferzeit (Text, z. B. "2–4 Werktage").
+  Kein Fallback-Wert: fehlt das Feld, erscheint im Editor ein Marker, im Shop nichts.
+{%- enddoc -%}
+
+{%- assign delivery = closest.product.metafields.custom.lieferzeit.value | strip -%}
+
+{%- if delivery != blank -%}
+  <p class="delivery-time" {{ block.shopify_attributes }}>
+    <span class="delivery-time__label">Lieferzeit:</span>
+    {{ delivery }}
+  </p>
+{%- elsif request.design_mode -%}
+  <p class="lamp-marker" {{ block.shopify_attributes }}>
+    [[Lieferzeit — Metafeld custom.lieferzeit fehlt]]
+  </p>
+{%- endif -%}
+
+{% stylesheet %}
+  .delivery-time {
+    margin: 0;
+    font-size: 0.875rem;
+  }
+
+  .delivery-time__label {
+    color: var(--color-foreground-muted);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Lieferzeit",
+  "tag": null,
+  "settings": [],
+  "presets": [
+    {
+      "name": "Lieferzeit"
+    }
+  ]
+}
+{% endschema %}

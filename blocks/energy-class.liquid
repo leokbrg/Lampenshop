@@ -1,0 +1,171 @@
+{%- doc -%}
+  Energieeffizienzklasse nach EU-Energielabel für Lichtquellen.
+  Liest die Metafelder custom.energieeffizienzklasse (Text, A–G),
+  custom.energielabel (Datei) und custom.produktdatenblatt (Datei).
+  Der Pfeil öffnet das Label, daneben steht das Klassenspektrum.
+  Fehlt die Klasse, erscheint im Theme-Editor ein Marker, im Shop nichts.
+{%- enddoc -%}
+
+{%- liquid
+  assign product_resource = closest.product
+  assign bs = block.settings
+  assign energy_class = product_resource.metafields.custom.energieeffizienzklasse.value | strip | upcase
+  assign label_file = product_resource.metafields.custom.energielabel.value
+  assign datasheet_file = product_resource.metafields.custom.produktdatenblatt.value
+
+  assign label_url = blank
+  if label_file != blank
+    if label_file.media_type == 'image'
+      assign label_url = label_file | image_url: width: 1200
+    else
+      assign label_url = label_file.url
+    endif
+  endif
+
+  assign datasheet_url = blank
+  if datasheet_file != blank
+    assign datasheet_url = datasheet_file.url
+  endif
+
+  assign valid_classes = 'A,B,C,D,E,F,G' | split: ','
+-%}
+
+{%- if energy_class != blank and valid_classes contains energy_class -%}
+  <div
+    class="energy-class energy-class--{{ bs.size }}"
+    {{ block.shopify_attributes }}
+  >
+    {%- capture arrow -%}
+      <span class="energy-class__arrow energy-class__arrow--{{ energy_class | downcase }}" aria-hidden="true">
+        <span class="energy-class__letter">{{ energy_class }}</span>
+        <span class="energy-class__scale">A<br>G</span>
+      </span>
+    {%- endcapture -%}
+
+    {%- if label_url != blank -%}
+      <a
+        class="energy-class__link"
+        href="{{ label_url }}"
+        target="_blank"
+        rel="noopener"
+        aria-label="Energieeffizienzklasse {{ energy_class }}, Spektrum A bis G – Energielabel öffnen"
+      >
+        {{- arrow -}}
+      </a>
+    {%- else -%}
+      <span class="energy-class__link" role="img" aria-label="Energieeffizienzklasse {{ energy_class }}, Spektrum A bis G">
+        {{- arrow -}}
+      </span>
+    {%- endif -%}
+
+    {%- if bs.show_datasheet and datasheet_url != blank -%}
+      <a class="energy-class__datasheet" href="{{ datasheet_url }}" target="_blank" rel="noopener">
+        Produktdatenblatt
+      </a>
+    {%- endif -%}
+  </div>
+{%- elsif request.design_mode -%}
+  <p class="lamp-marker" {{ block.shopify_attributes }}>
+    [[Energieeffizienzklasse — Metafeld custom.energieeffizienzklasse fehlt]]
+  </p>
+{%- endif -%}
+
+{% stylesheet %}
+  .energy-class {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+    font-size: 0.8125rem;
+    line-height: 1.2;
+  }
+
+  .energy-class__link {
+    display: inline-flex;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .energy-class__arrow {
+    --energy-height: 26px;
+    display: inline-flex;
+    align-items: stretch;
+    height: var(--energy-height);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    border: 1px solid #000;
+    background: #fff;
+    color: #000;
+  }
+
+  .energy-class--small .energy-class__arrow {
+    --energy-height: 20px;
+  }
+
+  .energy-class__letter {
+    display: inline-flex;
+    align-items: center;
+    padding-inline: 8px 14px;
+    font-size: calc(var(--energy-height) * 0.7);
+    color: #fff;
+    clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 50%, calc(100% - 9px) 100%, 0 100%);
+  }
+
+  .energy-class__scale {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-inline: 4px;
+    font-size: calc(var(--energy-height) * 0.32);
+    line-height: 1.05;
+    text-align: center;
+    border-inline-start: 1px solid #000;
+    order: -1;
+  }
+
+  /* Klassenfarben gemäß EU-Energielabel */
+  .energy-class__arrow--a .energy-class__letter { background: #00a651; }
+  .energy-class__arrow--b .energy-class__letter { background: #50b848; }
+  .energy-class__arrow--c .energy-class__letter { background: #bed630; color: #000; }
+  .energy-class__arrow--d .energy-class__letter { background: #fff200; color: #000; }
+  .energy-class__arrow--e .energy-class__letter { background: #fdb913; color: #000; }
+  .energy-class__arrow--f .energy-class__letter { background: #f37021; color: #000; }
+  .energy-class__arrow--g .energy-class__letter { background: #ed1c24; }
+
+  .energy-class__datasheet {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Energieeffizienzklasse",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "size",
+      "label": "Größe",
+      "options": [
+        { "value": "small", "label": "Klein (Produktkarte)" },
+        { "value": "regular", "label": "Normal (Produktseite)" }
+      ],
+      "default": "regular"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_datasheet",
+      "label": "Link zum Produktdatenblatt zeigen",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Energieeffizienzklasse"
+    }
+  ]
+}
+{% endschema %}

@@ -1875,3 +1875,13 @@ main > .shopify-section:first-child .section:not(.disable-section-top-offset) {
     margin-top: calc(var(--header-height) * var(--transparent-header-offset-boolean) * -1);
   }
 }
+
+/* Lampenshop: Marker für fehlende Pflichtdaten (nur im Theme-Editor sichtbar) */
+.lamp-marker {
+  margin: 0;
+  padding: 6px 8px;
+  font-size: 0.75rem;
+  background: #fff4d6;
+  color: #5c4200;
+  border: 1px dashed #b38700;
+}

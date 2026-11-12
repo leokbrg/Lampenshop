@@ -1,0 +1,94 @@
+{%- doc -%}
+  Herstellerangaben nach GPSR, WEEE-Nummer und Dokumente aus Metafeldern (custom.*).
+  Fehlende Pflichtangaben erscheinen im Editor als Marker, im Shop nicht.
+{%- enddoc -%}
+
+{%- liquid
+  assign m = closest.product.metafields.custom
+  assign manufacturer = m.hersteller.value
+  assign eu_person = m.eu_verantwortliche_person.value
+  assign weee = m.weee_nummer.value
+  assign safety_file = m.sicherheitshinweise.value
+  assign datasheet_file = m.produktdatenblatt.value
+-%}
+
+<div class="safety-info" {{ block.shopify_attributes }}>
+  {%- if manufacturer != blank -%}
+    <div class="safety-info__item">
+      <p class="safety-info__heading">Hersteller</p>
+      <p>{{ manufacturer | newline_to_br }}</p>
+    </div>
+  {%- elsif request.design_mode -%}
+    <p class="lamp-marker">[[Hersteller — Metafeld custom.hersteller fehlt]]</p>
+  {%- endif -%}
+
+  {%- if eu_person != blank -%}
+    <div class="safety-info__item">
+      <p class="safety-info__heading">Verantwortliche Person in der EU</p>
+      <p>{{ eu_person | newline_to_br }}</p>
+    </div>
+  {%- endif -%}
+
+  {%- if weee != blank -%}
+    <div class="safety-info__item">
+      <p class="safety-info__heading">WEEE-Reg.-Nr.</p>
+      <p>{{ weee }}</p>
+    </div>
+  {%- elsif request.design_mode -%}
+    <p class="lamp-marker">[[WEEE-Reg.-Nr. — Metafeld custom.weee_nummer fehlt]]</p>
+  {%- endif -%}
+
+  {%- if safety_file != blank or datasheet_file != blank -%}
+    <ul class="safety-info__docs">
+      {%- if safety_file != blank -%}
+        <li><a href="{{ safety_file.url }}" target="_blank" rel="noopener">Sicherheitshinweise und Anleitung</a></li>
+      {%- endif -%}
+      {%- if datasheet_file != blank -%}
+        <li><a href="{{ datasheet_file.url }}" target="_blank" rel="noopener">Produktdatenblatt</a></li>
+      {%- endif -%}
+    </ul>
+  {%- elsif request.design_mode -%}
+    <p class="lamp-marker">[[Sicherheitshinweise — Metafeld custom.sicherheitshinweise fehlt]]</p>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .safety-info {
+    display: grid;
+    gap: 14px;
+  }
+
+  .safety-info p {
+    margin: 0;
+  }
+
+  .safety-info__heading {
+    color: var(--color-foreground-muted);
+    font-size: 0.8125rem;
+  }
+
+  .safety-info__docs {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 6px;
+  }
+
+  .safety-info__docs a {
+    color: inherit;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Hersteller & Sicherheit",
+  "tag": null,
+  "settings": [],
+  "presets": [
+    {
+      "name": "Hersteller & Sicherheit"
+    }
+  ]
+}
+{% endschema %}
