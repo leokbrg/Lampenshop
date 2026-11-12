@@ -133,7 +133,24 @@ Bestehende Struktur aus `templates/product.json` vervollständigen:
    9. Aufräumen vor Launch: alle Produkte mit Tag `platzhalter` löschen
 4. Hinweis in `docs/ADMIN-SETUP.md`: Stockfotos sind nur Platzhalter. Vor dem Launch durch einheitliche Produktfotos ersetzen (`CLAUDE.md` Abschnitt 8).
 
-## Phase 10 — QA
+## Phase 10 — Shop-Einstellungen, Checkout, E-Mails, Datenschutz
+
+Das liegt fast alles in Shopify Admin. Du bereitest es vor und ergänzt `docs/ADMIN-SETUP.md` um einen zweiten Teil „Vor dem Launch“, jeweils mit Klickpfad, was einzustellen ist und was noch entschieden werden muss (als Marker, nicht raten):
+
+1. **Steuern und Preisanzeige**: Preise inkl. MwSt. anzeigen, Steuerhinweis „inkl. MwSt., zzgl. Versandkosten“ mit Link zur Versandseite — prüfen, dass das Theme das auf Produktseite, Karte und Warenkorb konsistent ausgibt.
+2. **Versand**: Versandzonen und -raten pro Lieferant/Lagerland. Werte als Marker, sie kommen vom Lieferanten.
+3. **Zahlungsarten**: Shopify Payments, PayPal, Klarna/Rechnung — nur als Checkliste, Entscheidung liegt bei mir. Zahlungsarten-Icons im Theme aus Shopify, nicht hardcoden.
+4. **Checkout**: Checkout-Editor an Farben und Schriften angleichen (Werte aus `CLAUDE.md`), Rechtslinks im Checkout-Footer, Pflichtfelder sinnvoll, Telefonnummer optional.
+5. **Bestellbestätigung und Benachrichtigungen**: Vorlage für die Bestellbestätigung so anpassen, dass die Widerrufsbelehrung in Textform enthalten ist (§ 312f BGB) und der Wortlaut zum Vertragsschluss in den AGB passt. Liquid-Snippet für die E-Mail in `content/emails/bestellbestaetigung.liquid` vorbereiten, Rechtstext selbst als Platzhalter `[[Widerrufsbelehrung vom Rechtsdienstleister einfügen]]`. Versand- und Stornierungsmails auf Deutsch und im Markenton prüfen.
+6. **Cookie-Banner und Einwilligung**: Shopify-Datenschutzeinstellungen (Customer Privacy / Cookie-Banner) für Deutschland aktivieren, Banner im Theme-Design prüfen. Keine Tracking-Pixel oder Analytics ohne Einwilligung.
+7. **Newsletter**: Double-Opt-in in den Kundeneinstellungen aktivieren. Anmeldeformular im Theme mit Hinweis auf Datenschutzerklärung.
+8. **Kundenkonten**: Entscheidung neue/klassische Kundenkonten als Marker, Konto-Icon im Header nur, wenn aktiviert.
+9. **Bewertungen**: Bewertungs-App (z. B. Judge.me) vor dem ersten Verkauf einrichten, aber im Theme ausgeblendet lassen (`CLAUDE.md` Abschnitt 11). Nur als Checklistenpunkt.
+10. **SEO und Basis**: Shop-Titel und Meta-Beschreibung (Marker), Meta-Titel-Muster für Kategorien und Produkte, Alt-Texte aus Produkttiteln, Favicon und Social-Sharing-Bild (Marker), strukturierte Produktdaten des Themes prüfen. Passwortseite im Shop-Design gestalten, solange der Shop nicht offen ist.
+11. **Bestellabwicklung Dropshipping**: Abschnitt mit offenen Entscheidungen — wie Bestellungen an Lieferanten gehen, wie Lagerbestand synchron bleibt, wie Sendungsnummern zurückkommen. Nichts davon technisch umsetzen, nur dokumentieren.
+12. **Rechtstexte**: Checkliste, welche Texte vom Rechtsdienstleister kommen und wo sie in Shopify eingefügt werden (Richtlinien: Impressum, Datenschutz, AGB, Widerruf, Versand). Danach jede Seite im Browser öffnen und nach `[` suchen.
+
+## Phase 11 — QA
 
 - `shopify theme check` → keine neuen Offenses.
 - JSON aller Templates valide.
