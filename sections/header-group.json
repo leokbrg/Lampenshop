@@ -39,7 +39,8 @@
         "padding-block-start": 15,
         "padding-block-end": 15,
         "divider_color": "{{ settings.color_palette.color3 }}"
-      }
+      },
+      "disabled": true
     },
     "header_section": {
       "type": "header",

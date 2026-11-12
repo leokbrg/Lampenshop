@@ -55,12 +55,12 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Join our email list</h2>",
+                "text": "<h2>Newsletter</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "h3",
-                "font": "var(--font-body--family)",
+                "font": "var(--font-heading--family)",
                 "font_size": "",
                 "line_height": "normal",
                 "letter_spacing": "normal",
@@ -80,7 +80,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Get exclusive deals and early access to new products.</p>",
+                "text": "<p>Neue Modelle und Neuigkeiten aus dem Sortiment, gelegentlich per E-Mail.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -141,8 +141,8 @@
         "menu_footer": {
           "type": "menu",
           "settings": {
-            "menu": "footer",
-            "heading": "",
+            "menu": "footer-shop",
+            "heading": "Shop",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "plus",
@@ -155,11 +155,11 @@
             "padding-inline-end": 0
           }
         },
-        "menu_main": {
+        "menu_hilfe": {
           "type": "menu",
           "settings": {
-            "menu": "main-menu",
-            "heading": "",
+            "menu": "footer-hilfe",
+            "heading": "Hilfe",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "plus",
@@ -176,7 +176,7 @@
       "block_order": [
         "group_wErUQf",
         "menu_footer",
-        "menu_main"
+        "menu_hilfe"
       ],
       "name": "t:names.footer",
       "settings": {
