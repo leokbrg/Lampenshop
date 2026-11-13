@@ -6,6 +6,7 @@
 
 /* ---------- Marker für fehlende Pflichtdaten (nur im Theme-Editor ausgegeben) ---------- */
 .lamp-marker {
+  display: inline-block;
   margin: 0;
   padding: 6px 8px;
   font-family: var(--font-body--family);
