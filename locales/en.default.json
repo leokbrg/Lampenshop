@@ -42,6 +42,9 @@
     },
     "search": {
       "placeholder": "Search lamps"
+    },
+    "service": {
+      "payment_heading": "Payment methods"
     }
   },
   "accessibility": {

@@ -94,5 +94,9 @@
   "search.placeholder": {
     "de": "Leuchten suchen",
     "en": "Search lamps"
+  },
+  "service.payment_heading": {
+    "de": "Zahlungsarten",
+    "en": "Payment methods"
   }
 }

@@ -33,6 +33,9 @@
     },
     "search": {
       "placeholder": "Leuchten suchen"
+    },
+    "service": {
+      "payment_heading": "Zahlungsarten"
     }
   },
   "blocks": {

@@ -1,0 +1,173 @@
+{%- comment -%}
+  Service-Leiste: zwei bis vier kurze, belegbare Aussagen plus die im Shop aktivierten Zahlungsarten.
+  Zahlungsarten kommen aus Shopify (shop.enabled_payment_types), nie aus dem Theme.
+  Keine Lieferzeit, Garantie oder Kundenzahl hier eintragen (CLAUDE.md Abschnitt 11).
+{%- endcomment -%}
+
+{%- liquid
+  assign ss = section.settings
+  assign has_payments = false
+  if ss.show_payment_icons and shop.enabled_payment_types.size > 0
+    assign has_payments = true
+  endif
+-%}
+
+<div class="section section--{{ ss.section_width }} spacing-style" style="{% render 'spacing-style', settings: ss %}">
+  <div class="service-strip">
+    <ul class="service-strip__list list-unstyled" role="list">
+      {%- for block in section.blocks -%}
+        <li class="service-strip__item" {{ block.shopify_attributes }}>
+          {%- if block.settings.heading != blank -%}
+            <p class="service-strip__heading">{{ block.settings.heading }}</p>
+          {%- endif -%}
+          {%- if block.settings.text != blank -%}
+            <p class="service-strip__text">{{ block.settings.text }}</p>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+
+      {%- if has_payments -%}
+        <li class="service-strip__item service-strip__item--payments">
+          <p class="service-strip__heading">{{ 'lamp.service.payment_heading' | t }}</p>
+          <ul class="service-strip__payments list-unstyled" role="list">
+            {%- for type in shop.enabled_payment_types -%}
+              <li>{{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}</li>
+            {%- endfor -%}
+          </ul>
+        </li>
+      {%- elsif ss.show_payment_icons and request.design_mode -%}
+        <li class="service-strip__item">
+          <p class="lamp-marker">[[Zahlungsarten — in Shopify noch keine Zahlungsart aktiviert]]</p>
+        </li>
+      {%- endif -%}
+    </ul>
+  </div>
+</div>
+
+{% stylesheet %}
+  .service-strip {
+    border-block: 1px solid var(--color-line);
+    padding-block: var(--padding-4xl);
+  }
+
+  .service-strip__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-2xl);
+    margin: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .service-strip__list {
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+      gap: var(--gap-3xl);
+    }
+  }
+
+  .service-strip__heading {
+    margin: 0 0 var(--margin-xs);
+    font-family: var(--font-subheading--family);
+    font-weight: var(--font-subheading--weight);
+    font-size: 0.9375rem;
+  }
+
+  .service-strip__text {
+    margin: 0;
+    max-width: 36ch;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .service-strip__payments {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-xs);
+    margin: 0;
+  }
+
+  .service-strip__payments .icon {
+    display: block;
+    width: auto;
+    height: 24px;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Service-Leiste",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Nur Aussagen eintragen, die sicher stimmen. Keine Lieferzeiten, Garantien oder Kundenzahlen."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Zahlungsarten aus Shopify zeigen",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Aussage",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Überschrift"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Service-Leiste",
+      "blocks": [
+        { "type": "item", "settings": { "heading": "Technische Daten vollständig angegeben" } },
+        { "type": "item", "settings": { "heading": "Energielabel und Datenblatt zu jeder Leuchte" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -8,6 +8,15 @@
   endif
 %}
 
+{%- liquid
+  # Lampenshop: ohne Blog bzw. ohne Artikel blendet sich die Section aus (keine Platzhalter-Karten)
+  assign has_articles = false
+  if section.settings.blog != blank and section.settings.blog.articles_count > 0
+    assign has_articles = true
+  endif
+-%}
+
+{%- if has_articles -%}
 <div
   class="section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
 ></div>
@@ -65,6 +74,13 @@
     test_id: 'featured-blog-posts'
   %}
 </div>
+{%- elsif request.design_mode -%}
+  <div class="section section--page-width">
+    <p class="lamp-marker">
+      [[Ratgeber — Blog fehlt oder enthält noch keine Artikel. Diese Section ist im Shop ausgeblendet.]]
+    </p>
+  </div>
+{%- endif -%}
 
 {% schema %}
 {

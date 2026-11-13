@@ -9,57 +9,87 @@
  */
 {
   "sections": {
-    "hero_jVaWmY": {
+    "hero": {
       "type": "hero",
       "blocks": {
-        "text_YLPk4p": {
+        "hero_heading": {
           "type": "text",
-          "name": "t:names.heading",
           "settings": {
             "text": "<h1>Leuchten für ruhige Räume</h1>",
+            "type_preset": "h1",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h1",
-            "font": "var(--font-heading--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
             "text_color": "{{ settings.color_palette.background }}",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
+            "font": "var(--font-heading--family)",
+            "wrap": "balance"
+          },
+          "blocks": {}
+        },
+        "hero_buttons": {
+          "type": "group",
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fit-content",
+            "width_mobile": "fit-content",
+            "height": "fit",
+            "background_media": "none",
+            "border": "none",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
-          "blocks": {}
-        },
-        "button_H9gpTf": {
-          "type": "button",
-          "name": "t:names.button",
-          "settings": {
-            "label": "Alle Leuchten ansehen",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-custom",
-            "custom_button_background": "rgba(0, 0, 0, 0)",
-            "custom_button_text": "{{ settings.color_palette.background }}",
-            "custom_button_border": "{{ settings.color_palette.background }}",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
+          "blocks": {
+            "btn_innen": {
+              "type": "button",
+              "settings": {
+                "label": "Innenleuchten",
+                "link": "shopify://collections/innenleuchten",
+                "open_in_new_tab": false,
+                "style_class": "button-custom",
+                "width": "fit-content",
+                "width_mobile": "fit-content",
+                "custom_button_background": "{{ settings.color_palette.background }}",
+                "custom_button_text": "{{ settings.color_palette.foreground }}"
+              },
+              "blocks": {}
+            },
+            "btn_aussen": {
+              "type": "button",
+              "settings": {
+                "label": "Außenleuchten",
+                "link": "shopify://collections/aussenleuchten",
+                "open_in_new_tab": false,
+                "style_class": "button-custom",
+                "width": "fit-content",
+                "width_mobile": "fit-content",
+                "custom_button_background": "rgba(0, 0, 0, 0)",
+                "custom_button_text": "{{ settings.color_palette.background }}",
+                "custom_button_border": "{{ settings.color_palette.background }}"
+              },
+              "blocks": {}
+            }
           },
-          "blocks": {}
+          "block_order": [
+            "btn_innen",
+            "btn_aussen"
+          ]
         }
       },
       "block_order": [
-        "text_YLPk4p",
-        "button_H9gpTf"
+        "hero_heading",
+        "hero_buttons"
       ],
       "name": "t:names.hero",
       "settings": {
@@ -79,21 +109,204 @@
         "section_height": "large",
         "section_height_custom": 50,
         "toggle_overlay": true,
-        "overlay_color": "#1b17123d",
+        "overlay_color": "#1b171299",
         "overlay_style": "gradient",
         "gradient_direction": "to top",
         "blurred_reflection": false,
         "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 72
+        "padding-block-start": 96,
+        "padding-block-end": 64,
+        "custom_mobile_media": true
       }
     },
-    "product_list_fa6P9H": {
+    "hauptkategorien": {
+      "type": "collection-list",
+      "blocks": {
+        "static-collection-card": {
+          "type": "_collection-card",
+          "static": true,
+          "settings": {
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "flex-start",
+            "placement": "below_image",
+            "collection_card_gap": 4,
+            "border": "none",
+            "border_radius": 0
+          },
+          "blocks": {
+            "collection-card-image": {
+              "type": "_collection-card-image",
+              "static": true,
+              "settings": {
+                "image_ratio": "portrait"
+              }
+            },
+            "collection-title": {
+              "type": "collection-title",
+              "settings": {
+                "type_preset": "h3",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "background": false,
+                "padding-block-start": 8,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
+            }
+          },
+          "block_order": [
+            "collection-title"
+          ]
+        }
+      },
+      "block_order": [],
+      "settings": {
+        "collection_list": [
+          "innenleuchten",
+          "aussenleuchten",
+          "schreibtischleuchten"
+        ],
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "columns": 3,
+        "mobile_columns": "1",
+        "mobile_card_size": "44cqw",
+        "columns_gap": 16,
+        "rows_gap": 24,
+        "max_collections": 3,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "gap": 32,
+        "padding-block-start": 64,
+        "padding-block-end": 32
+      }
+    },
+    "bauart": {
+      "type": "collection-list",
+      "blocks": {
+        "static-collection-card": {
+          "type": "_collection-card",
+          "static": true,
+          "settings": {
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "flex-start",
+            "placement": "below_image",
+            "collection_card_gap": 4,
+            "border": "none",
+            "border_radius": 0
+          },
+          "blocks": {
+            "collection-card-image": {
+              "type": "_collection-card-image",
+              "static": true,
+              "settings": {
+                "image_ratio": "portrait"
+              }
+            },
+            "collection-title": {
+              "type": "collection-title",
+              "settings": {
+                "type_preset": "custom",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "background": false,
+                "padding-block-start": 8,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0,
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty"
+              }
+            }
+          },
+          "block_order": [
+            "collection-title"
+          ]
+        },
+        "head": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "width_mobile": "fill",
+            "height": "fit",
+            "background_media": "none",
+            "border": "none",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "h": {
+              "type": "text",
+              "settings": {
+                "text": "<h2>Nach Bauart</h2>",
+                "type_preset": "h2",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "h"
+          ]
+        }
+      },
+      "block_order": [
+        "head"
+      ],
+      "settings": {
+        "collection_list": [
+          "deckenleuchten",
+          "pendelleuchten",
+          "wandleuchten",
+          "stehleuchten",
+          "tischleuchten",
+          "aussen-wandleuchten",
+          "wegeleuchten"
+        ],
+        "layout_type": "grid",
+        "carousel_on_mobile": true,
+        "columns": 7,
+        "mobile_columns": "2",
+        "mobile_card_size": "44cqw",
+        "columns_gap": 12,
+        "rows_gap": 24,
+        "max_collections": 7,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "gap": 32,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "neu": {
       "type": "product-list",
       "blocks": {
         "static-header": {
           "type": "_product-list-content",
-          "name": "t:names.header",
           "static": true,
           "settings": {
             "content_direction": "row",
@@ -105,42 +318,22 @@
             "vertical_alignment_flex_direction_column": "center",
             "gap": 12,
             "width": "fill",
-            "custom_width": 100,
             "width_mobile": "fill",
-            "custom_width_mobile": 100,
             "height": "fit",
-            "custom_height": 100,
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_list_text_YFtzcL": {
+            "title": {
               "type": "_product-list-text",
-              "name": "t:names.collection_title",
               "settings": {
                 "text": "<h2>Neu im Sortiment</h2>",
+                "type_preset": "h2",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h3",
-                "font": "var(--font-heading--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -148,35 +341,29 @@
               },
               "blocks": {}
             },
-            "product_list_button_MWeP9V": {
+            "link": {
               "type": "_product-list-button",
-              "name": "t:names.product_list_button",
               "settings": {
                 "label": "Alle ansehen",
                 "open_in_new_tab": false,
                 "style_class": "button-unstyled",
                 "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
+                "width_mobile": "fit-content"
               },
               "blocks": {}
             }
           },
           "block_order": [
-            "product_list_text_YFtzcL",
-            "product_list_button_MWeP9V"
+            "title",
+            "link"
           ]
         },
         "static-product-card": {
           "type": "_product-card",
-          "name": "t:names.product_card",
           "static": true,
           "settings": {
             "product_card_gap": 4,
             "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -184,14 +371,11 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_card_gallery_677WP3": {
+            "card_gallery": {
               "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
               "settings": {
-                "image_ratio": "adapt",
+                "image_ratio": "portrait",
                 "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
                 "border_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -200,46 +384,20 @@
               },
               "blocks": {}
             },
-            "product_title_YXxMTj": {
+            "card_title": {
               "type": "product-title",
-              "name": "t:names.product_title",
               "settings": {
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "paragraph",
+                "type_preset": "custom",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_JQzVV4": {
-              "type": "price",
-              "name": "t:names.product_price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "padding-block-start": 0,
+                "padding-block-start": 8,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
@@ -253,14 +411,36 @@
                 "text": "<p>{{ closest.product.type }}</p>",
                 "type_preset": "custom",
                 "font": "var(--font-body--family)",
-                "font_size": "0.8125rem",
+                "font_size": "0.875rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
                 "text_color": "{{ settings.color_palette.color1 }}",
                 "width": "100%",
+                "max_width": "normal",
                 "alignment": "left",
                 "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "card_price": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": false,
+                "show_installments": false,
+                "show_tax_info": true,
+                "type_preset": "custom",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "padding-block-start": 4,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
@@ -277,65 +457,205 @@
             },
             "card_swatches": {
               "type": "swatches",
-              "settings": {},
+              "settings": {
+                "product_swatches_alignment": "flex-start",
+                "product_swatches_alignment_mobile": "flex-start",
+                "hide_padding": false,
+                "product_swatches_padding_top": 4,
+                "product_swatches_padding_bottom": 0,
+                "product_swatches_padding_left": 0,
+                "product_swatches_padding_right": 0
+              },
               "blocks": {}
             }
           },
           "block_order": [
-            "product_card_gallery_677WP3",
-            "product_title_YXxMTj",
+            "card_gallery",
+            "card_title",
             "card_type",
-            "price_JQzVV4",
+            "card_price",
             "card_energy",
             "card_swatches"
           ]
         }
       },
-      "name": "t:names.featured_collection",
       "settings": {
-        "collection": "all",
+        "collection": "neu",
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "max_products": 8,
         "columns": 4,
         "mobile_columns": "2",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 8,
-        "rows_gap": 24,
+        "columns_gap": 16,
+        "rows_gap": 32,
         "icons_style": "arrow",
         "icons_shape": "none",
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
-        "gap": 28,
+        "gap": 32,
         "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-end": 64
       }
     },
-    "bauart_kategorien": {
+    "marke": {
+      "type": "media-with-content",
       "blocks": {
-        "group_Lg9LkF": {
-          "type": "group",
-          "name": "t:names.header",
+        "media": {
+          "type": "_media-without-appearance",
+          "static": true,
+          "settings": {
+            "image_position": "cover"
+          },
+          "blocks": {}
+        },
+        "content": {
+          "type": "_content-without-appearance",
+          "static": true,
+          "settings": {
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 24
+          },
+          "blocks": {
+            "brand_heading": {
+              "type": "text",
+              "settings": {
+                "text": "<h2>Über uns</h2>",
+                "type_preset": "h2",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "brand_text": {
+              "type": "text",
+              "settings": {
+                "text": "<p>[[Markentext — noch festzulegen]]</p>",
+                "type_preset": "rte",
+                "width": "fit-content",
+                "max_width": "narrow",
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "brand_link": {
+              "type": "button",
+              "settings": {
+                "label": "Mehr erfahren",
+                "link": "shopify://pages/ueber-uns",
+                "open_in_new_tab": false,
+                "style_class": "button-secondary",
+                "width": "fit-content",
+                "width_mobile": "fit-content"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "brand_heading",
+            "brand_text",
+            "brand_link"
+          ]
+        }
+      },
+      "settings": {
+        "media_position": "left",
+        "media_width": "medium",
+        "media_height": "60svh",
+        "section_width": "page-width",
+        "extend_media": false,
+        "background_color": "{{ settings.color_palette.color2 }}",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "schreibtisch": {
+      "type": "product-list",
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "static": true,
           "settings": {
             "content_direction": "column",
             "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
             "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "center",
             "gap": 12,
             "width": "fill",
-            "custom_width": 100,
             "width_mobile": "fill",
-            "custom_width_mobile": 100,
             "height": "fit",
-            "custom_height": 100,
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "title": {
+              "type": "_product-list-text",
+              "settings": {
+                "text": "<h2>Schreibtischleuchten</h2>",
+                "type_preset": "h2",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "intro": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Leuchten für Schreibtisch und Arbeitsplatz.</p>",
+                "type_preset": "rte",
+                "width": "fit-content",
+                "max_width": "narrow",
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "link": {
+              "type": "_product-list-button",
+              "settings": {
+                "label": "Alle Schreibtischleuchten",
+                "open_in_new_tab": false,
+                "style_class": "button-unstyled",
+                "width": "fit-content",
+                "width_mobile": "fit-content"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "title",
+            "intro",
+            "link"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
             "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -343,107 +663,223 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "text_bc98Wh": {
-              "type": "text",
-              "name": "t:names.text",
+            "card_gallery": {
+              "type": "_product-card-gallery",
               "settings": {
-                "text": "<h2>Nach Bauart</h2>",
-                "type_preset": "h3",
-                "font": "var(--font-heading--family)",
-                "font_size": "",
+                "image_ratio": "portrait",
+                "border": "none",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "card_title": {
+              "type": "product-title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "custom",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "width": "fit-content",
+                "padding-block-start": 8,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "card_type": {
+              "type": "text",
+              "name": "Bauart",
+              "settings": {
+                "text": "<p>{{ closest.product.type }}</p>",
+                "type_preset": "custom",
+                "font": "var(--font-body--family)",
+                "font_size": "0.875rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "text_color": "{{ settings.color_palette.color1 }}",
+                "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
                 "padding-block-start": 0,
-                "padding-block-end": 16,
+                "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              }
-            }
-          },
-          "block_order": [
-            "text_bc98Wh"
-          ]
-        },
-        "static-collection-card": {
-          "type": "_collection-card",
-          "name": "t:names.collection_card",
-          "static": true,
-          "settings": {
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "flex-start",
-            "placement": "on_image",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0
-          },
-          "blocks": {
-            "collection-card-image": {
-              "type": "_collection-card-image",
-              "name": "t:names.collection_card_image",
-              "static": true,
-              "settings": {
-                "image_ratio": "adapt"
-              }
+              },
+              "blocks": {}
             },
-            "collection-title": {
-              "type": "collection-title",
-              "name": "t:names.collection_title",
+            "card_price": {
+              "type": "price",
               "settings": {
-                "type_preset": "rte",
+                "show_sale_price_first": false,
+                "show_installments": false,
+                "show_tax_info": true,
+                "type_preset": "custom",
+                "width": "100%",
+                "alignment": "left",
                 "font": "var(--font-body--family)",
-                "font_size": "",
+                "font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
-                "wrap": "pretty",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "background": true,
-                "background_color": "#ffffff",
                 "padding-block-start": 4,
-                "padding-block-end": 4,
-                "padding-inline-start": 8,
-                "padding-inline-end": 8
-              }
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "card_energy": {
+              "type": "energy-class",
+              "settings": {
+                "size": "small",
+                "show_datasheet": false
+              },
+              "blocks": {}
+            },
+            "card_swatches": {
+              "type": "swatches",
+              "settings": {
+                "product_swatches_alignment": "flex-start",
+                "product_swatches_alignment_mobile": "flex-start",
+                "hide_padding": false,
+                "product_swatches_padding_top": 4,
+                "product_swatches_padding_bottom": 0,
+                "product_swatches_padding_left": 0,
+                "product_swatches_padding_right": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
-            "collection-title"
+            "card_gallery",
+            "card_title",
+            "card_type",
+            "card_price",
+            "card_energy",
+            "card_swatches"
           ]
         }
       },
-      "block_order": [
-        "group_Lg9LkF"
-      ],
       "settings": {
-        "collection_list": [],
+        "collection": "schreibtischleuchten",
         "layout_type": "grid",
         "carousel_on_mobile": false,
-        "columns": 5,
+        "max_products": 4,
+        "columns": 4,
         "mobile_columns": "2",
-        "columns_gap": 8,
-        "rows_gap": 8,
+        "columns_gap": 16,
+        "rows_gap": 32,
         "icons_style": "arrow",
         "icons_shape": "none",
         "section_width": "page-width",
-        "gap": 12,
-        "padding-block-start": 64,
-        "padding-block-end": 32,
-        "max_collections": 5
+        "horizontal_alignment": "flex-start",
+        "gap": 32,
+        "padding-block-start": 96,
+        "padding-block-end": 64
+      }
+    },
+    "service": {
+      "type": "service-strip",
+      "blocks": {
+        "s1": {
+          "type": "item",
+          "settings": {
+            "heading": "Technische Daten vollständig angegeben",
+            "text": "Lichtstrom, Farbtemperatur, Maße und Schutzart stehen bei jeder Leuchte."
+          }
+        },
+        "s2": {
+          "type": "item",
+          "settings": {
+            "heading": "Energielabel und Datenblatt zu jeder Leuchte",
+            "text": "Direkt auf der Produktseite abrufbar."
+          }
+        }
       },
-      "type": "collection-list"
+      "block_order": [
+        "s1",
+        "s2"
+      ],
+      "settings": {
+        "show_payment_icons": true,
+        "section_width": "page-width",
+        "padding-block-start": 32,
+        "padding-block-end": 32
+      }
+    },
+    "ratgeber": {
+      "type": "featured-blog-posts",
+      "blocks": {
+        "static-blog-title": {
+          "type": "_featured-blog-posts-title",
+          "static": true,
+          "settings": {
+            "text": "<h2>Ratgeber</h2>",
+            "type_preset": "h2",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          }
+        },
+        "static-blog-post-card": {
+          "type": "_featured-blog-posts-card",
+          "static": true,
+          "settings": {
+            "alignment": "left",
+            "gap": 8
+          },
+          "blocks": {
+            "image": {
+              "type": "_featured-blog-posts-image",
+              "static": true,
+              "settings": {
+                "image_ratio": "landscape"
+              }
+            }
+          }
+        }
+      },
+      "settings": {
+        "blog": "ratgeber",
+        "layout_type": "grid",
+        "carousel_on_mobile": true,
+        "post_limit": 3,
+        "columns": 3,
+        "mobile_columns": "1",
+        "columns_gap": 16,
+        "rows_gap": 32,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "gap": 32,
+        "padding-block-start": 64,
+        "padding-block-end": 96
+      }
     }
   },
   "order": [
-    "hero_jVaWmY",
-    "bauart_kategorien",
-    "product_list_fa6P9H"
+    "hero",
+    "hauptkategorien",
+    "bauart",
+    "neu",
+    "marke",
+    "schreibtisch",
+    "service",
+    "ratgeber"
   ]
 }
