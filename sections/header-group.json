@@ -99,7 +99,9 @@
         "border_width": 0,
         "enable_transparent_header_home": false,
         "enable_transparent_header_product": false,
-        "enable_transparent_header_collection": false
+        "enable_transparent_header_collection": false,
+        "search_field": true,
+        "actions_display_style": "icon"
       }
     }
   },

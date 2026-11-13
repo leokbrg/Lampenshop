@@ -30,6 +30,9 @@
       "eprel_nummer": "EPREL number",
       "yes": "yes",
       "no": "no"
+    },
+    "search": {
+      "placeholder": "Search lamps"
     }
   },
   "blocks": {

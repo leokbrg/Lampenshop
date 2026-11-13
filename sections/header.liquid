@@ -132,7 +132,7 @@
     endif
   endif
   capture search
-    render 'search', style: search_style, class: search_class, display_style: section.settings.actions_display_style
+    render 'search', style: search_style, class: search_class, display_style: section.settings.actions_display_style, field: section.settings.search_field
   endcapture
 
   # Skip drawer search under specific conditions:
@@ -1043,6 +1043,23 @@
     --header-padding: var(--padding-2xs);
   }
 
+  /* Lampenshop: kompakter Zustand, sobald der Sticky-Header greift */
+  .header__columns {
+    transition: padding-block var(--animation-speed) var(--animation-easing);
+  }
+
+  .header[sticky='always'][data-sticky-state='active'] {
+    --header-padding: var(--padding-2xs);
+
+    border-block-end: 1px solid var(--color-line);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .header__columns {
+      transition: none;
+    }
+  }
+
   .header__columns {
     --padding-block-start: var(--header-padding);
     --padding-block-end: var(--header-padding);
@@ -1362,6 +1379,13 @@
       "id": "show_search",
       "label": "t:settings.search_icon",
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "search_field",
+      "label": "Suche als sichtbares Suchfeld (Desktop)",
+      "default": false,
+      "visible_if": "{{ section.settings.show_search }}"
     },
     {
       "type": "select",

@@ -30,6 +30,9 @@
       "eprel_nummer": "EPREL-Nummer",
       "yes": "ja",
       "no": "nein"
+    },
+    "search": {
+      "placeholder": "Leuchten suchen"
     }
   },
   "blocks": {

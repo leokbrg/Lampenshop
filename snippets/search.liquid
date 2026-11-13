@@ -4,6 +4,7 @@
   @param {string} [style] - The style of the search action.
   @param {string} [class] - Additional classes for the search action.
   @param {string} [display_style] - The display style ('icon' or 'text').
+  @param {boolean} [field] - Render as a visible search field on large screens (opens the search modal).
 
   @example
   {% render 'search', style: 'default', class: 'custom-class', display_style: 'icon' %}
@@ -11,7 +12,7 @@
 
 {% unless style == 'none' %}
   <search-button
-    class="search-action{% if display_style == 'text' %} search-action--text{% endif %}{% if class != blank %} {{ class | strip }}{% endif %}"
+    class="search-action{% if display_style == 'text' %} search-action--text{% endif %}{% if field %} search-action--field{% endif %}{% if class != blank %} {{ class | strip }}{% endif %}"
   >
     <button
       on:click="#search-modal/showDialog"
@@ -26,6 +27,9 @@
       <span class="svg-wrapper {% if display_style != 'icon' %}desktop:hidden{% endif %}">
         {{ 'icon-search.svg' | inline_asset_content }}
       </span>
+      {%- if field -%}
+        <span class="search-action__placeholder" aria-hidden="true">{{ 'lamp.search.placeholder' | t }}</span>
+      {%- endif -%}
     </button>
   </search-button>
 {% endunless %}
@@ -73,6 +77,51 @@
 
     [data-menu-style='menu'] .header__column--left .search-action--text {
       margin-inline: 0;
+    }
+  }
+
+  /* Lampenshop: sichtbares Suchfeld ab 990px, darunter weiterhin das Icon */
+  .search-action__placeholder {
+    display: none;
+  }
+
+  @media screen and (min-width: 990px) {
+    [data-menu-style='menu'] .header__column .search-action.search-action--field {
+      margin-inline: 0 var(--gap-xs);
+    }
+
+    [data-menu-style='menu'] .search-action--field .header-actions__action {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: var(--gap-xs);
+      width: clamp(180px, 18vw, 260px);
+      height: 40px;
+      padding-inline: var(--padding-sm);
+      border: 1px solid var(--color-line);
+      border-radius: var(--search-border-radius);
+      color: var(--color-foreground-muted);
+      font-size: 0.875rem;
+      cursor: text;
+      transition: border-color var(--animation-speed) var(--animation-easing);
+    }
+
+    [data-menu-style='menu'] .search-action--field .header-actions__action:hover,
+    [data-menu-style='menu'] .search-action--field .header-actions__action:focus-visible {
+      border-color: var(--color-foreground);
+    }
+
+    [data-menu-style='menu'] .search-action--field .svg-wrapper {
+      flex-shrink: 0;
+      width: var(--icon-size-xs);
+      height: var(--icon-size-xs);
+    }
+
+    [data-menu-style='menu'] .search-action--field .search-action__placeholder {
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 {% endstylesheet %}

@@ -1,25 +1,98 @@
 {
-  "energy.aria_label": {"de": "Energieeffizienzklasse {{ class }}, Spektrum A bis G", "en": "Energy efficiency class {{ class }}, scale A to G"},
-  "energy.open_label": {"de": "Energieeffizienzklasse {{ class }}, Spektrum A bis G – Energielabel öffnen", "en": "Energy efficiency class {{ class }}, scale A to G – open energy label"},
-  "energy.datasheet": {"de": "Produktdatenblatt", "en": "Product information sheet"},
-  "delivery.label": {"de": "Lieferzeit:", "en": "Delivery time:"},
-  "safety.manufacturer": {"de": "Hersteller", "en": "Manufacturer"},
-  "safety.eu_person": {"de": "Verantwortliche Person in der EU", "en": "Responsible person in the EU"},
-  "safety.weee": {"de": "WEEE-Reg.-Nr.", "en": "WEEE reg. no."},
-  "safety.safety_docs": {"de": "Sicherheitshinweise und Anleitung", "en": "Safety information and manual"},
-  "specs.lichtstrom": {"de": "Lichtstrom", "en": "Luminous flux"},
-  "specs.farbtemperatur": {"de": "Farbtemperatur", "en": "Colour temperature"},
-  "specs.leistung": {"de": "Leistung", "en": "Power"},
-  "specs.sockel": {"de": "Sockel", "en": "Base"},
-  "specs.leuchtmittel": {"de": "Leuchtmittel", "en": "Light source"},
-  "specs.leuchtmittel_im_lieferumfang": {"de": "Leuchtmittel im Lieferumfang", "en": "Light source included"},
-  "specs.dimmbar": {"de": "Dimmbar", "en": "Dimmable"},
-  "specs.ip_schutzart": {"de": "IP-Schutzart", "en": "IP rating"},
-  "specs.material": {"de": "Material", "en": "Material"},
-  "specs.masse": {"de": "Maße", "en": "Dimensions"},
-  "specs.kabellaenge": {"de": "Kabellänge", "en": "Cable length"},
-  "specs.energieeffizienzklasse": {"de": "Energieeffizienzklasse", "en": "Energy efficiency class"},
-  "specs.eprel_nummer": {"de": "EPREL-Nummer", "en": "EPREL number"},
-  "specs.yes": {"de": "ja", "en": "yes"},
-  "specs.no": {"de": "nein", "en": "no"}
+  "energy.aria_label": {
+    "de": "Energieeffizienzklasse {{ class }}, Spektrum A bis G",
+    "en": "Energy efficiency class {{ class }}, scale A to G"
+  },
+  "energy.open_label": {
+    "de": "Energieeffizienzklasse {{ class }}, Spektrum A bis G – Energielabel öffnen",
+    "en": "Energy efficiency class {{ class }}, scale A to G – open energy label"
+  },
+  "energy.datasheet": {
+    "de": "Produktdatenblatt",
+    "en": "Product information sheet"
+  },
+  "delivery.label": {
+    "de": "Lieferzeit:",
+    "en": "Delivery time:"
+  },
+  "safety.manufacturer": {
+    "de": "Hersteller",
+    "en": "Manufacturer"
+  },
+  "safety.eu_person": {
+    "de": "Verantwortliche Person in der EU",
+    "en": "Responsible person in the EU"
+  },
+  "safety.weee": {
+    "de": "WEEE-Reg.-Nr.",
+    "en": "WEEE reg. no."
+  },
+  "safety.safety_docs": {
+    "de": "Sicherheitshinweise und Anleitung",
+    "en": "Safety information and manual"
+  },
+  "specs.lichtstrom": {
+    "de": "Lichtstrom",
+    "en": "Luminous flux"
+  },
+  "specs.farbtemperatur": {
+    "de": "Farbtemperatur",
+    "en": "Colour temperature"
+  },
+  "specs.leistung": {
+    "de": "Leistung",
+    "en": "Power"
+  },
+  "specs.sockel": {
+    "de": "Sockel",
+    "en": "Base"
+  },
+  "specs.leuchtmittel": {
+    "de": "Leuchtmittel",
+    "en": "Light source"
+  },
+  "specs.leuchtmittel_im_lieferumfang": {
+    "de": "Leuchtmittel im Lieferumfang",
+    "en": "Light source included"
+  },
+  "specs.dimmbar": {
+    "de": "Dimmbar",
+    "en": "Dimmable"
+  },
+  "specs.ip_schutzart": {
+    "de": "IP-Schutzart",
+    "en": "IP rating"
+  },
+  "specs.material": {
+    "de": "Material",
+    "en": "Material"
+  },
+  "specs.masse": {
+    "de": "Maße",
+    "en": "Dimensions"
+  },
+  "specs.kabellaenge": {
+    "de": "Kabellänge",
+    "en": "Cable length"
+  },
+  "specs.energieeffizienzklasse": {
+    "de": "Energieeffizienzklasse",
+    "en": "Energy efficiency class"
+  },
+  "specs.eprel_nummer": {
+    "de": "EPREL-Nummer",
+    "en": "EPREL number"
+  },
+  "specs.yes": {
+    "de": "ja",
+    "en": "yes"
+  },
+  "specs.no": {
+    "de": "nein",
+    "en": "no"
+  },
+  "search.placeholder": {
+    "de": "Leuchten suchen",
+    "en": "Search lamps"
+  }
 }
