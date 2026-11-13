@@ -48,6 +48,13 @@
       "empty_title": "There are currently no lamps in this category.",
       "empty_link": "View all lamps",
       "subnav_label": "Subcategories"
+    },
+    "breadcrumb": {
+      "label": "Breadcrumb",
+      "home": "Home"
+    },
+    "product": {
+      "dimension_drawing_alt": "Dimensional drawing"
     }
   },
   "accessibility": {

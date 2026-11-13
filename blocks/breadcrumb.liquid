@@ -1,0 +1,141 @@
+{%- doc -%}
+  Breadcrumb für die Produktseite: Startseite › Hauptkategorie › Unterkategorie.
+  Die Kategorien werden aus dem Hauptmenü abgeleitet (erster Menüpunkt, dessen Collection
+  das Produkt enthält), nicht aus dem Referrer – so ist der Pfad für jeden Besucher gleich.
+{%- enddoc -%}
+
+{%- liquid
+  assign product_resource = closest.product
+  assign menu = block.settings.menu
+  assign excluded = block.settings.excluded_handles | remove: ' ' | split: ','
+  assign product_handles = product_resource.collections | map: 'handle'
+  assign parent_link = null
+  assign child_link = null
+
+  # 1. Unterkategorie suchen (z. B. Innenleuchten › Pendelleuchten)
+  for link in menu.links
+    for child in link.links
+      if child.type != 'collection_link' or child.url == link.url
+        continue
+      endif
+      if product_handles contains child.object.handle
+        assign parent_link = link
+        assign child_link = child
+        break
+      endif
+    endfor
+    if child_link != null
+      break
+    endif
+  endfor
+
+  # 2. Sonst Hauptkategorie ohne Unterpunkte (z. B. Schreibtischleuchten), dann mit Unterpunkten
+  if parent_link == null
+    for link in menu.links
+      if link.type != 'collection_link' or link.links.size > 0 or excluded contains link.object.handle
+        continue
+      endif
+      if product_handles contains link.object.handle
+        assign parent_link = link
+        break
+      endif
+    endfor
+  endif
+
+  if parent_link == null
+    for link in menu.links
+      if link.type != 'collection_link' or excluded contains link.object.handle
+        continue
+      endif
+      if product_handles contains link.object.handle
+        assign parent_link = link
+        break
+      endif
+    endfor
+  endif
+-%}
+
+<nav class="breadcrumb" aria-label="{{ 'lamp.breadcrumb.label' | t }}" {{ block.shopify_attributes }}>
+  <ol class="breadcrumb__list list-unstyled">
+    <li class="breadcrumb__item">
+      <a class="breadcrumb__link" href="{{ routes.root_url }}">{{ 'lamp.breadcrumb.home' | t }}</a>
+    </li>
+    {%- if parent_link != null -%}
+      <li class="breadcrumb__item">
+        <a class="breadcrumb__link" href="{{ parent_link.url }}">{{ parent_link.title }}</a>
+      </li>
+    {%- endif -%}
+    {%- if child_link != null -%}
+      <li class="breadcrumb__item">
+        <a class="breadcrumb__link" href="{{ child_link.url }}">{{ child_link.title }}</a>
+      </li>
+    {%- endif -%}
+  </ol>
+</nav>
+
+{% stylesheet %}
+  .breadcrumb {
+    width: 100%;
+  }
+
+  .breadcrumb__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-2xs) var(--gap-xs);
+    margin: 0;
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+  }
+
+  .breadcrumb__item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap-xs);
+  }
+
+  .breadcrumb__item + .breadcrumb__item::before {
+    content: '/';
+    color: var(--color-line);
+  }
+
+  .breadcrumb__link {
+    /* Zeilenhöhe als Touch-Fläche, ohne das Layout aufzublasen */
+    padding-block: var(--padding-xs);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .breadcrumb__link:hover {
+    color: var(--color-foreground);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Breadcrumb",
+  "tag": null,
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menü",
+      "default": "main-menu",
+      "info": "Die Kategorien im Breadcrumb werden aus diesem Menü abgeleitet."
+    },
+    {
+      "type": "text",
+      "id": "excluded_handles",
+      "label": "Ausgeschlossene Collection-Handles",
+      "default": "neu,all",
+      "info": "Kommagetrennt. Sammel-Collections, die nicht als Kategorie im Pfad erscheinen sollen."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Breadcrumb"
+    }
+  ]
+}
+{% endschema %}

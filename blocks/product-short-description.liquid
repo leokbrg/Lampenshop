@@ -1,0 +1,38 @@
+{%- doc -%}
+  Kurze Value Proposition aus dem Metafeld custom.kurzbeschreibung (einzeiliger oder mehrzeiliger Text).
+  Ist das Feld leer, wird nichts ausgegeben – auch kein Marker, die Angabe ist optional.
+{%- enddoc -%}
+
+{%- assign short_description = closest.product.metafields.custom.kurzbeschreibung.value | strip -%}
+
+{%- if short_description != blank -%}
+  <p class="product-short-description" {{ block.shopify_attributes }}>
+    {{- short_description | escape | newline_to_br -}}
+  </p>
+{%- endif -%}
+
+{% stylesheet %}
+  .product-short-description {
+    margin: 0;
+    max-width: 46ch;
+    color: var(--color-text-secondary);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Kurzbeschreibung",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Zeigt das Metafeld custom.kurzbeschreibung. Leer → keine Ausgabe."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kurzbeschreibung"
+    }
+  ]
+}
+{% endschema %}

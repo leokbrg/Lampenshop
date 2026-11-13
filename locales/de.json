@@ -48,6 +48,13 @@
       "empty_title": "In dieser Kategorie sind gerade keine Leuchten verfügbar.",
       "empty_link": "Alle Leuchten ansehen",
       "subnav_label": "Unterkategorien"
+    },
+    "breadcrumb": {
+      "label": "Brotkrumen-Navigation",
+      "home": "Startseite"
+    },
+    "product": {
+      "dimension_drawing_alt": "Maßzeichnung"
     }
   },
   "blocks": {

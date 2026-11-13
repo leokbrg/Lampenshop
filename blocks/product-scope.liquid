@@ -1,0 +1,62 @@
+{%- doc -%}
+  Lieferumfang aus custom.lieferumfang. Unterstützt eine Liste einzeiliger Texte
+  oder einen mehrzeiligen Text (eine Position pro Zeile).
+  Ohne Daten: im Shop wird die Accordion-Zeile ausgeblendet, im Editor erscheint ein Marker.
+{%- enddoc -%}
+
+{%- liquid
+  assign scope_field = closest.product.metafields.custom.lieferumfang
+  assign scope = scope_field.value
+
+  if scope != blank
+    if scope_field.type contains 'list.'
+      assign scope_items = scope
+    else
+      assign scope_items = scope | newline_to_br | split: '<br />'
+    endif
+  endif
+-%}
+
+{%- if scope != blank -%}
+  <ul class="product-scope" {{ block.shopify_attributes }}>
+    {%- for item in scope_items -%}
+      {%- assign item_text = item | strip -%}
+      {%- if item_text != blank -%}
+        <li>{{ item_text | escape }}</li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+{%- elsif request.design_mode -%}
+  <p class="lamp-marker" {{ block.shopify_attributes }}>
+    [[Lieferumfang — Metafeld custom.lieferumfang fehlt. Zeile ist im Shop ausgeblendet.]]
+  </p>
+{%- else -%}
+  <span class="lamp-row-empty" hidden></span>
+{%- endif -%}
+
+{% stylesheet %}
+  .product-scope {
+    margin: 0;
+    padding-inline-start: 1.1em;
+    display: grid;
+    gap: var(--gap-2xs);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Lieferumfang",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Zeigt custom.lieferumfang als Liste. Ohne Daten wird die Accordion-Zeile im Shop ausgeblendet."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lieferumfang"
+    }
+  ]
+}
+{% endschema %}

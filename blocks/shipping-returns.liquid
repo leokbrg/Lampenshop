@@ -1,0 +1,87 @@
+{%- doc -%}
+  Versand & Rückgabe auf der Produktseite. Das Theme formuliert hier nichts selbst:
+  Der Text kommt aus einer in Shopify gepflegten Seite, darunter stehen Links auf die
+  Versand- und Widerrufsrichtlinie des Shops. Ist nichts davon vorhanden, erscheint im
+  Editor ein Marker und im Shop wird die Accordion-Zeile ausgeblendet.
+{%- enddoc -%}
+
+{%- liquid
+  assign info_page = block.settings.page
+  assign shipping_policy = shop.shipping_policy
+  assign refund_policy = shop.refund_policy
+
+  assign has_content = false
+  if info_page.content != blank or shipping_policy.body != blank or refund_policy.body != blank
+    assign has_content = true
+  endif
+-%}
+
+{%- if has_content -%}
+  <div class="shipping-returns" {{ block.shopify_attributes }}>
+    {%- if info_page.content != blank -%}
+      <div class="shipping-returns__text rte">{{ info_page.content }}</div>
+    {%- elsif request.design_mode -%}
+      <p class="lamp-marker">[[Versand & Rückgabe — Kurztext: im Block eine Seite auswählen]]</p>
+    {%- endif -%}
+
+    <ul class="shipping-returns__links list-unstyled">
+      {%- if shipping_policy.body != blank -%}
+        <li><a href="{{ shipping_policy.url }}">{{ shipping_policy.title }}</a></li>
+      {%- elsif request.design_mode -%}
+        <li><span class="lamp-marker">[[Versandrichtlinie — in Shopify noch nicht hinterlegt]]</span></li>
+      {%- endif -%}
+      {%- if refund_policy.body != blank -%}
+        <li><a href="{{ refund_policy.url }}">{{ refund_policy.title }}</a></li>
+      {%- elsif request.design_mode -%}
+        <li><span class="lamp-marker">[[Widerrufsbelehrung — in Shopify noch nicht hinterlegt]]</span></li>
+      {%- endif -%}
+    </ul>
+  </div>
+{%- elsif request.design_mode -%}
+  <p class="lamp-marker" {{ block.shopify_attributes }}>
+    [[Versand & Rückgabe — weder Seite gewählt noch Richtlinien in Shopify hinterlegt. Zeile ist im Shop ausgeblendet.]]
+  </p>
+{%- else -%}
+  <span class="lamp-row-empty" hidden></span>
+{%- endif -%}
+
+{% stylesheet %}
+  .shipping-returns {
+    display: grid;
+    gap: var(--gap-lg);
+  }
+
+  .shipping-returns__links {
+    margin: 0;
+    display: grid;
+    gap: var(--gap-2xs);
+  }
+
+  .shipping-returns__links a {
+    color: inherit;
+    text-underline-offset: 3px;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Versand & Rückgabe",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Der Text kommt aus der gewählten Seite, die Links aus den Shopify-Richtlinien. Hier wird nichts frei formuliert."
+    },
+    {
+      "type": "page",
+      "id": "page",
+      "label": "Seite mit Kurztext"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Versand & Rückgabe"
+    }
+  ]
+}
+{% endschema %}

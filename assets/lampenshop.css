@@ -66,3 +66,9 @@ h2,
 .text-secondary {
   color: var(--color-text-secondary);
 }
+
+/* ---------- Produktseite: Accordion-Zeilen ohne Inhalt ausblenden ---------- */
+/* Blöcke ohne Daten geben .lamp-row-empty aus; die ganze Zeile verschwindet dann im Shop. */
+accordion-custom:has(.lamp-row-empty) {
+  display: none;
+}

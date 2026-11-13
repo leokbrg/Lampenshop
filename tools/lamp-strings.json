@@ -130,5 +130,17 @@
   "collection.subnav_label": {
     "de": "Unterkategorien",
     "en": "Subcategories"
+  },
+  "breadcrumb.label": {
+    "de": "Brotkrumen-Navigation",
+    "en": "Breadcrumb"
+  },
+  "breadcrumb.home": {
+    "de": "Startseite",
+    "en": "Home"
+  },
+  "product.dimension_drawing_alt": {
+    "de": "Maßzeichnung",
+    "en": "Dimensional drawing"
   }
 }

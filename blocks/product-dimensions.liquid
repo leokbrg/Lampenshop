@@ -1,0 +1,85 @@
+{%- doc -%}
+  Maße: Text aus custom.masse und Maßzeichnung aus custom.masszeichnung (Datei, Bild).
+  Fehlt beides, bleibt der Block leer; die umgebende Accordion-Zeile wird dann im Shop
+  ausgeblendet (.lamp-row-empty) und im Theme-Editor mit Marker gezeigt.
+{%- enddoc -%}
+
+{%- liquid
+  assign m = closest.product.metafields.custom
+  assign dimensions = m.masse.value
+  assign drawing = m.masszeichnung.value
+-%}
+
+{%- if dimensions != blank or drawing != blank -%}
+  <div class="product-dimensions" {{ block.shopify_attributes }}>
+    {%- if dimensions != blank -%}
+      <p class="product-dimensions__text">{{ dimensions | escape | newline_to_br }}</p>
+    {%- endif -%}
+    {%- if drawing != blank -%}
+      {%- liquid
+        assign drawing_alt_base = 'lamp.product.dimension_drawing_alt' | t
+        assign drawing_alt = drawing.alt | default: drawing_alt_base
+      -%}
+      <a
+        class="product-dimensions__drawing"
+        href="{{ drawing | image_url: width: 2000 }}"
+        target="_blank"
+        rel="noopener"
+      >
+        {{-
+          drawing
+          | image_url: width: 1200
+          | image_tag: loading: 'lazy', widths: '400, 600, 800, 1200', sizes: '(min-width: 750px) 480px, 100vw', alt: drawing_alt
+        -}}
+      </a>
+    {%- endif -%}
+  </div>
+{%- elsif request.design_mode -%}
+  <p class="lamp-marker" {{ block.shopify_attributes }}>
+    [[Maße — Metafelder custom.masse und custom.masszeichnung fehlen. Zeile ist im Shop ausgeblendet.]]
+  </p>
+{%- else -%}
+  <span class="lamp-row-empty" hidden></span>
+{%- endif -%}
+
+{% stylesheet %}
+  .product-dimensions {
+    display: grid;
+    gap: var(--gap-lg);
+  }
+
+  .product-dimensions__text {
+    margin: 0;
+  }
+
+  .product-dimensions__drawing {
+    display: block;
+    max-width: 480px;
+    background-color: #fff;
+    border: 1px solid var(--color-line);
+  }
+
+  .product-dimensions__drawing img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Maße",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Zeigt custom.masse (Text) und custom.masszeichnung (Bild). Ohne Daten wird die Accordion-Zeile im Shop ausgeblendet."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maße"
+    }
+  ]
+}
+{% endschema %}
