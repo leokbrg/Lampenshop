@@ -7,7 +7,7 @@
 
 {%- if delivery != blank -%}
   <p class="delivery-time" {{ block.shopify_attributes }}>
-    <span class="delivery-time__label">Lieferzeit:</span>
+    <span class="delivery-time__label">{{ 'lamp.delivery.label' | t }}</span>
     {{ delivery }}
   </p>
 {%- elsif request.design_mode -%}

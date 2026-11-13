@@ -8,7 +8,6 @@
   assign m = p.metafields.custom
 
   assign keys = 'lichtstrom,farbtemperatur,leistung,sockel,leuchtmittel,leuchtmittel_im_lieferumfang,dimmbar,ip_schutzart,material,masse,kabellaenge,energieeffizienzklasse,eprel_nummer' | split: ','
-  assign labels = 'Lichtstrom|Farbtemperatur|Leistung|Sockel|Leuchtmittel|Leuchtmittel im Lieferumfang|Dimmbar|IP-Schutzart|Material|Maße|Kabellänge|Energieeffizienzklasse|EPREL-Nummer' | split: '|'
   assign units = 'lm|K|W||||||||||' | split: '|'
 -%}
 
@@ -18,7 +17,8 @@
       {%- liquid
         assign value = m[key].value
         assign type = m[key].type
-        assign label = labels[forloop.index0]
+        assign label_key = 'lamp.specs.' | append: key
+        assign label = label_key | t
         assign unit = units[forloop.index0]
       -%}
       {%- if value != blank or type == 'boolean' and value == false -%}
@@ -26,7 +26,7 @@
           <dt>{{ label }}</dt>
           <dd>
             {%- if type == 'boolean' -%}
-              {%- if value -%}ja{%- else -%}nein{%- endif -%}
+              {%- if value -%}{{ 'lamp.specs.yes' | t }}{%- else -%}{{ 'lamp.specs.no' | t }}{%- endif -%}
             {%- elsif key == 'eprel_nummer' -%}
               <a href="https://eprel.ec.europa.eu/qr/{{ value | strip | url_encode }}" target="_blank" rel="noopener">{{ value }}</a>
             {%- else -%}

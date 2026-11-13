@@ -1,4 +1,37 @@
 {
+  "lamp": {
+    "energy": {
+      "aria_label": "Energy efficiency class {{ class }}, scale A to G",
+      "open_label": "Energy efficiency class {{ class }}, scale A to G – open energy label",
+      "datasheet": "Product information sheet"
+    },
+    "delivery": {
+      "label": "Delivery time:"
+    },
+    "safety": {
+      "manufacturer": "Manufacturer",
+      "eu_person": "Responsible person in the EU",
+      "weee": "WEEE reg. no.",
+      "safety_docs": "Safety information and manual"
+    },
+    "specs": {
+      "lichtstrom": "Luminous flux",
+      "farbtemperatur": "Colour temperature",
+      "leistung": "Power",
+      "sockel": "Base",
+      "leuchtmittel": "Light source",
+      "leuchtmittel_im_lieferumfang": "Light source included",
+      "dimmbar": "Dimmable",
+      "ip_schutzart": "IP rating",
+      "material": "Material",
+      "masse": "Dimensions",
+      "kabellaenge": "Cable length",
+      "energieeffizienzklasse": "Energy efficiency class",
+      "eprel_nummer": "EPREL number",
+      "yes": "yes",
+      "no": "no"
+    }
+  },
   "accessibility": {
     "account": "Nalog",
     "active_filters": "Aktivni filteri:",

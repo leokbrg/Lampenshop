@@ -15,7 +15,7 @@
 <div class="safety-info" {{ block.shopify_attributes }}>
   {%- if manufacturer != blank -%}
     <div class="safety-info__item">
-      <p class="safety-info__heading">Hersteller</p>
+      <p class="safety-info__heading">{{ 'lamp.safety.manufacturer' | t }}</p>
       <p>{{ manufacturer | newline_to_br }}</p>
     </div>
   {%- elsif request.design_mode -%}
@@ -24,14 +24,14 @@
 
   {%- if eu_person != blank -%}
     <div class="safety-info__item">
-      <p class="safety-info__heading">Verantwortliche Person in der EU</p>
+      <p class="safety-info__heading">{{ 'lamp.safety.eu_person' | t }}</p>
       <p>{{ eu_person | newline_to_br }}</p>
     </div>
   {%- endif -%}
 
   {%- if weee != blank -%}
     <div class="safety-info__item">
-      <p class="safety-info__heading">WEEE-Reg.-Nr.</p>
+      <p class="safety-info__heading">{{ 'lamp.safety.weee' | t }}</p>
       <p>{{ weee }}</p>
     </div>
   {%- elsif request.design_mode -%}
@@ -41,10 +41,10 @@
   {%- if safety_file != blank or datasheet_file != blank -%}
     <ul class="safety-info__docs">
       {%- if safety_file != blank -%}
-        <li><a href="{{ safety_file.url }}" target="_blank" rel="noopener">Sicherheitshinweise und Anleitung</a></li>
+        <li><a href="{{ safety_file.url }}" target="_blank" rel="noopener">{{ 'lamp.safety.safety_docs' | t }}</a></li>
       {%- endif -%}
       {%- if datasheet_file != blank -%}
-        <li><a href="{{ datasheet_file.url }}" target="_blank" rel="noopener">Produktdatenblatt</a></li>
+        <li><a href="{{ datasheet_file.url }}" target="_blank" rel="noopener">{{ 'lamp.energy.datasheet' | t }}</a></li>
       {%- endif -%}
     </ul>
   {%- elsif request.design_mode -%}

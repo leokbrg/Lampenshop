@@ -145,6 +145,10 @@
             "label": "14px"
           },
           {
+            "value": "15",
+            "label": "15px"
+          },
+          {
             "value": "16",
             "label": "16px"
           },
@@ -237,8 +241,16 @@
             "label": "40px"
           },
           {
+            "value": "44",
+            "label": "44px"
+          },
+          {
             "value": "48",
             "label": "48px"
+          },
+          {
+            "value": "52",
+            "label": "52px"
           },
           {
             "value": "56",
@@ -379,6 +391,10 @@
           {
             "value": "32",
             "label": "32px"
+          },
+          {
+            "value": "36",
+            "label": "36px"
           },
           {
             "value": "40",
@@ -533,6 +549,10 @@
             "label": "24px"
           },
           {
+            "value": "28",
+            "label": "28px"
+          },
+          {
             "value": "32",
             "label": "32px"
           },
@@ -685,6 +705,10 @@
             "label": "20px"
           },
           {
+            "value": "22",
+            "label": "22px"
+          },
+          {
             "value": "24",
             "label": "24px"
           },
@@ -823,6 +847,10 @@
           {
             "value": "12",
             "label": "12px"
+          },
+          {
+            "value": "13",
+            "label": "13px"
           },
           {
             "value": "14",

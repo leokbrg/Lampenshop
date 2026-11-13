@@ -48,19 +48,19 @@
         href="{{ label_url }}"
         target="_blank"
         rel="noopener"
-        aria-label="Energieeffizienzklasse {{ energy_class }}, Spektrum A bis G – Energielabel öffnen"
+        aria-label="{{ 'lamp.energy.open_label' | t: class: energy_class }}"
       >
         {{- arrow -}}
       </a>
     {%- else -%}
-      <span class="energy-class__link" role="img" aria-label="Energieeffizienzklasse {{ energy_class }}, Spektrum A bis G">
+      <span class="energy-class__link" role="img" aria-label="{{ 'lamp.energy.aria_label' | t: class: energy_class }}">
         {{- arrow -}}
       </span>
     {%- endif -%}
 
     {%- if bs.show_datasheet and datasheet_url != blank -%}
       <a class="energy-class__datasheet" href="{{ datasheet_url }}" target="_blank" rel="noopener">
-        Produktdatenblatt
+        {{ 'lamp.energy.datasheet' | t }}
       </a>
     {%- endif -%}
   </div>

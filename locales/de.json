@@ -1,4 +1,37 @@
 {
+  "lamp": {
+    "energy": {
+      "aria_label": "Energieeffizienzklasse {{ class }}, Spektrum A bis G",
+      "open_label": "Energieeffizienzklasse {{ class }}, Spektrum A bis G – Energielabel öffnen",
+      "datasheet": "Produktdatenblatt"
+    },
+    "delivery": {
+      "label": "Lieferzeit:"
+    },
+    "safety": {
+      "manufacturer": "Hersteller",
+      "eu_person": "Verantwortliche Person in der EU",
+      "weee": "WEEE-Reg.-Nr.",
+      "safety_docs": "Sicherheitshinweise und Anleitung"
+    },
+    "specs": {
+      "lichtstrom": "Lichtstrom",
+      "farbtemperatur": "Farbtemperatur",
+      "leistung": "Leistung",
+      "sockel": "Sockel",
+      "leuchtmittel": "Leuchtmittel",
+      "leuchtmittel_im_lieferumfang": "Leuchtmittel im Lieferumfang",
+      "dimmbar": "Dimmbar",
+      "ip_schutzart": "IP-Schutzart",
+      "material": "Material",
+      "masse": "Maße",
+      "kabellaenge": "Kabellänge",
+      "energieeffizienzklasse": "Energieeffizienzklasse",
+      "eprel_nummer": "EPREL-Nummer",
+      "yes": "ja",
+      "no": "nein"
+    }
+  },
   "blocks": {
     "load_video": "Video laden: {{ description }}",
     "sold_out": "Ausverkauft",

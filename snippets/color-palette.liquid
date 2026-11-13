@@ -171,6 +171,10 @@
     --color-foreground-rgb: {{ settings.page_text_color.rgb }};
     --color-border: {{ settings.page_text_color }};
     --color-border-rgb: {{ settings.page_text_color.rgb }};
+    /* Lampenshop: feste Flächen-, Linien- und Sekundärtextfarbe direkt aus der Palette (nie zusammengesetzt) */
+    --color-surface: {{ settings.color_palette.color2 | default: '#EAE3D7' }};
+    --color-line: {{ settings.color_palette.color3 | default: '#D8CEC0' }};
+    --color-text-secondary: {{ settings.color_palette.color1 | default: '#625A50' }};
     --palette-lightest: {{ palette_lightest }};
     --palette-lightest-rgb: {{ palette_lightest.rgb }};
     --palette-darkest: {{ palette_darkest }};

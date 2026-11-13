@@ -1,0 +1,68 @@
+/*
+ * Lampenshop — shopweite Ergänzungen zum Horizon-Basis-CSS.
+ * Nur Regeln, die mehrere Sections betreffen. Block-spezifisches CSS steht im jeweiligen Block.
+ * Verwendete Variablen sind in snippets/color-palette.liquid bzw. theme-styles-variables.liquid definiert.
+ */
+
+/* ---------- Marker für fehlende Pflichtdaten (nur im Theme-Editor ausgegeben) ---------- */
+.lamp-marker {
+  margin: 0;
+  padding: 6px 8px;
+  font-family: var(--font-body--family);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  background: #fff4d6;
+  color: #5c4200;
+  border: 1px dashed #b38700;
+}
+
+/* ---------- Typografie ---------- */
+h1,
+h2,
+h3,
+h4,
+.h1,
+.h2,
+.h3,
+.h4 {
+  text-wrap: balance;
+}
+
+/* Lange deutsche Komposita dürfen in schmalen Spalten trennen statt überzulaufen */
+h1,
+h2,
+.h1,
+.h2 {
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+.rte p,
+.rte li {
+  max-width: 68ch;
+}
+
+.rte a {
+  text-underline-offset: 3px;
+}
+
+/* ---------- Buttons: ruhiger Hover, keine Schatten ---------- */
+.button,
+.button-secondary,
+.button-custom {
+  min-height: 48px;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Bildflächen: Produktbilder stehen immer auf Sand ---------- */
+.card-gallery,
+.product-media-container,
+.resource-card__media,
+.cart-items__media-container {
+  background-color: var(--color-surface);
+}
+
+/* Sekundärtext in der festen Palettenfarbe statt per Deckkraft */
+.text-secondary {
+  color: var(--color-text-secondary);
+}
