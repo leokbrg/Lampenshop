@@ -8,7 +8,20 @@
   endif
 %}
 
-{% if menu != blank or heading != blank %}
+{%- liquid
+  # Lampenshop: Spalte optional ganz ausblenden, solange das Menü fehlt oder leer ist
+  assign menu_hidden = false
+  if block_settings.hide_if_empty and menu.links.size == 0
+    assign menu_hidden = true
+  endif
+-%}
+
+{% if menu_hidden and request.design_mode %}
+  <p class="lamp-marker" {{ block.shopify_attributes }}>
+    [[Menü „{{ heading }}“ — fehlt oder ist leer. Spalte ist im Shop ausgeblendet.]]
+  </p>
+{% elsif menu_hidden %}
+{% elsif menu != blank or heading != blank %}
   {% render 'contrast-override',
     background_color: block_settings.background_color,
     text_color: block_settings.text_color,
@@ -178,6 +191,12 @@
       "step": 1,
       "unit": "px",
       "default": 12
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_if_empty",
+      "label": "Ausblenden, wenn das Menü fehlt oder leer ist",
+      "default": false
     },
     {
       "type": "checkbox",

@@ -1,4 +1,25 @@
-{% if shop.policies.size > 0 %}
+{%- comment -%}
+  Lampenshop: Im Modus „inline“ stehen alle Richtlinien direkt sichtbar nebeneinander
+  (Impressum, Datenschutz, AGB, Widerruf müssen ohne Umweg erreichbar sein).
+{%- endcomment -%}
+{% if shop.policies.size > 0 and block.settings.display == 'inline' %}
+  <ul
+    class="policy-list-inline list-unstyled"
+    style="
+      {% render 'typography-style', preset: 'custom', settings: block.settings %}
+      {% if block.settings.text_color != blank %}--color-utilities: {{ block.settings.text_color }};{% endif %}
+    "
+    {{ block.shopify_attributes }}
+  >
+    {%- for policy in shop.policies -%}
+      {%- if policy != blank -%}
+        <li>
+          <a href="{{ policy.url }}" class="footer-utilities__text">{{- policy.title | escape -}}</a>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+{% elsif shop.policies.size > 0 %}
   <anchored-popover-component
     data-hover-triggered="true"
   >
@@ -43,9 +64,35 @@
       </ul>
     </div>
   </anchored-popover-component>
+{% elsif request.design_mode %}
+  <p class="lamp-marker" {{ block.shopify_attributes }}>
+    [[Rechtliches — in Shopify sind noch keine Richtlinien hinterlegt (Impressum, Datenschutz, AGB, Widerruf)]]
+  </p>
 {% endif %}
 
 {% stylesheet %}
+  .policy-list-inline {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--gap-2xs) var(--gap-xl);
+    margin: 0;
+    font-size: var(--font-size, 0.75rem);
+    text-transform: var(--text-transform, none);
+    text-wrap: wrap;
+  }
+
+  .policy-list-inline a {
+    display: inline-block;
+    padding-block: var(--padding-xs);
+    text-decoration: none;
+  }
+
+  .policy-list-inline a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
   .policy-list-trigger {
     anchor-name: --terms-policies-trigger;
     cursor: pointer;
@@ -160,6 +207,16 @@
   "name": "t:names.policy_list",
   "tag": null,
   "settings": [
+    {
+      "type": "select",
+      "id": "display",
+      "label": "Darstellung",
+      "options": [
+        { "value": "popover", "label": "Aufklappmenü" },
+        { "value": "inline", "label": "Links direkt sichtbar" }
+      ],
+      "default": "popover"
+    },
     {
       "type": "paragraph",
       "content": "t:content.manage_policies"
