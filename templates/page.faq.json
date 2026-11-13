@@ -1,0 +1,329 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "title": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "type_preset": "h1",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "content": {
+          "type": "page-content",
+          "settings": {},
+          "blocks": {}
+        },
+        "faq": {
+          "type": "accordion",
+          "settings": {
+            "icon": "plus",
+            "dividers": true,
+            "type_preset": "h5",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "q_lieferzeit": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Wie lange dauert die Lieferung?",
+                "open_by_default": true,
+                "icon": "none"
+              },
+              "blocks": {
+                "a": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Die Lieferzeit steht bei jeder Leuchte direkt auf der Produktseite, über dem Button „In den Warenkorb“.</p><p>[[Lieferzeit allgemein — noch festzulegen, muss mit Versandseite und Produktseiten übereinstimmen]]</p>",
+                    "type_preset": "rte",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "a"
+              ]
+            },
+            "q_versandkosten": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Was kostet der Versand?",
+                "open_by_default": false,
+                "icon": "none"
+              },
+              "blocks": {
+                "a": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>[[Versandkosten — noch festzulegen]]</p>",
+                    "type_preset": "rte",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "a"
+              ]
+            },
+            "q_teillieferung": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Kann meine Bestellung in mehreren Paketen ankommen?",
+                "open_by_default": false,
+                "icon": "none"
+              },
+              "blocks": {
+                "a": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>[[Teillieferungen — noch festzulegen, muss mit der Versandseite übereinstimmen]]</p>",
+                    "type_preset": "rte",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "a"
+              ]
+            },
+            "q_zahlung": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Wie kann ich bezahlen?",
+                "open_by_default": false,
+                "icon": "none"
+              },
+              "blocks": {
+                "a": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Die verfügbaren Zahlungsarten stehen auf der Seite <a href=\"/pages/zahlungsarten\">Zahlungsarten</a> und werden im Checkout angezeigt.</p>",
+                    "type_preset": "rte",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "a"
+              ]
+            },
+            "q_rueckgabe": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Wie funktioniert die Rückgabe?",
+                "open_by_default": false,
+                "icon": "none"
+              },
+              "blocks": {
+                "a": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>[[Rückgabe-Ablauf — noch festzulegen]]</p><p>Maßgeblich ist die Widerrufsbelehrung, verlinkt im Fußbereich jeder Seite.</p>",
+                    "type_preset": "rte",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "a"
+              ]
+            },
+            "q_leuchtmittel": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Ist das Leuchtmittel enthalten?",
+                "open_by_default": false,
+                "icon": "none"
+              },
+              "blocks": {
+                "a": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Das steht bei jeder Leuchte auf der Produktseite unter „Technische Daten“ in der Zeile „Leuchtmittel im Lieferumfang“.</p>",
+                    "type_preset": "rte",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "a"
+              ]
+            },
+            "q_energielabel": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Wo finde ich Energielabel und Produktdatenblatt?",
+                "open_by_default": false,
+                "icon": "none"
+              },
+              "blocks": {
+                "a": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Auf jeder Produktseite neben dem Preis: Ein Klick auf den Pfeil mit der Energieeffizienzklasse öffnet das Energielabel, daneben steht der Link zum Produktdatenblatt.</p>",
+                    "type_preset": "rte",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "a"
+              ]
+            },
+            "q_schaden": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Was tun, wenn die Leuchte beschädigt ankommt?",
+                "open_by_default": false,
+                "icon": "none"
+              },
+              "blocks": {
+                "a": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>[[Transportschäden — Ablauf noch festzulegen]]</p>",
+                    "type_preset": "rte",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "a"
+              ]
+            },
+            "q_kontakt": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Wie erreiche ich den Support?",
+                "open_by_default": false,
+                "icon": "none"
+              },
+              "blocks": {
+                "a": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Über das Formular auf der Seite <a href=\"/pages/kontakt\">Kontakt</a>.</p><p>[[Reaktionszeit — noch festzulegen]]</p>",
+                    "type_preset": "rte",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "a"
+              ]
+            }
+          },
+          "block_order": [
+            "q_lieferzeit",
+            "q_versandkosten",
+            "q_teillieferung",
+            "q_zahlung",
+            "q_rueckgabe",
+            "q_leuchtmittel",
+            "q_energielabel",
+            "q_schaden",
+            "q_kontakt"
+          ]
+        }
+      },
+      "block_order": [
+        "title",
+        "content",
+        "faq"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "gap": 24,
+        "padding-block-start": 48,
+        "padding-block-end": 96
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -72,3 +72,74 @@ h2,
 accordion-custom:has(.lamp-row-empty) {
   display: none;
 }
+
+/* ---------- Tabellen in Fließtext: kein Faux-Bold, keine Versalien ---------- */
+/* DM Sans ist nur in 400 und 500 geladen. */
+.rte thead,
+.rte tr:not(:has(td)),
+.shopify-policy__body thead,
+.shopify-policy__body tr:not(:has(td)) {
+  font-weight: var(--font-subheading--weight);
+  text-transform: none;
+  background-color: var(--color-surface);
+}
+
+/* ---------- Richtlinien (/policies/*) ---------- */
+/* Diese Seiten rendert Shopify ohne Theme-Template im Standard-Layout; hier an Seiten-Templates angeglichen. */
+.shopify-policy__container {
+  box-sizing: content-box;
+  max-width: var(--normal-content-width);
+  margin-inline: auto;
+  padding: var(--padding-5xl) var(--page-margin) var(--padding-6xl);
+}
+
+.shopify-policy__title {
+  margin-block-end: var(--margin-4xl);
+  text-align: start;
+}
+
+.shopify-policy__title h1 {
+  margin: 0;
+}
+
+.shopify-policy__body {
+  overflow-wrap: break-word;
+}
+
+.shopify-policy__body :is(h2, h3, h4, h5, h6) {
+  margin-block: 2.5rem 0.75rem;
+}
+
+.shopify-policy__body h2 {
+  font-size: var(--font-h3--size);
+  line-height: var(--font-h3--line-height);
+}
+
+.shopify-policy__body h3 {
+  font-size: var(--font-h4--size);
+  line-height: var(--font-h4--line-height);
+}
+
+.shopify-policy__body :is(p, ul, ol) {
+  margin-block: 0 1em;
+}
+
+.shopify-policy__body :is(ul, ol) {
+  padding-inline-start: 1.5em;
+}
+
+.shopify-policy__body a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
+.shopify-policy__body table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.shopify-policy__body :is(th, td) {
+  padding: var(--padding-sm) var(--padding-md);
+  text-align: start;
+  border-block-end: 1px solid var(--color-line);
+}

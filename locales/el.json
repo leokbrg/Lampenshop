@@ -55,6 +55,12 @@
     },
     "product": {
       "dimension_drawing_alt": "Dimensional drawing"
+    },
+    "contact": {
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "response_time": "Response time"
     }
   },
   "blocks": {

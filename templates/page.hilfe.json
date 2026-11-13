@@ -1,0 +1,114 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "title": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "type_preset": "h1",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "content": {
+          "type": "page-content",
+          "settings": {},
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "title",
+        "content"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "gap": 24,
+        "padding-block-start": 48,
+        "padding-block-end": 32
+      }
+    },
+    "cards": {
+      "type": "section",
+      "blocks": {
+        "c1": {
+          "type": "link-card",
+          "settings": {
+            "heading": "FAQ",
+            "text": "Häufige Fragen auf einen Blick",
+            "link": "shopify://pages/faq"
+          },
+          "blocks": {}
+        },
+        "c2": {
+          "type": "link-card",
+          "settings": {
+            "heading": "Versand",
+            "text": "Lieferung und Versandkosten",
+            "link": "shopify://pages/versand"
+          },
+          "blocks": {}
+        },
+        "c3": {
+          "type": "link-card",
+          "settings": {
+            "heading": "Rückgabe",
+            "text": "Widerruf und Rücksendung",
+            "link": "shopify://pages/rueckgabe"
+          },
+          "blocks": {}
+        },
+        "c4": {
+          "type": "link-card",
+          "settings": {
+            "heading": "Kontakt",
+            "text": "Fragen zu Bestellung oder Produkt",
+            "link": "shopify://pages/kontakt"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "flex-start",
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "flex-start",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "",
+        "background_media": "none",
+        "border": "none",
+        "padding-block-start": 0,
+        "padding-block-end": 96
+      }
+    }
+  },
+  "order": [
+    "main",
+    "cards"
+  ]
+}

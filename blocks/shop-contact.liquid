@@ -1,0 +1,152 @@
+{%- doc -%}
+  Kontaktdaten des Shops. Name, Anschrift und Telefon kommen aus Shopify
+  (Einstellungen → Allgemein), nicht aus dem Theme. Die Support-E-Mail wird bewusst nicht
+  automatisch aus shop.email gelesen (das ist oft die private Admin-Adresse), sondern im
+  Block eingetragen; bleibt sie leer, erscheint im Editor ein Marker.
+{%- enddoc -%}
+
+{%- liquid
+  assign bs = block.settings
+  assign address = shop.address
+  assign support_email = bs.email | strip
+-%}
+
+<div class="shop-contact" {{ block.shopify_attributes }}>
+  {%- if bs.heading != blank -%}
+    <h2 class="shop-contact__heading h4">{{ bs.heading }}</h2>
+  {%- endif -%}
+
+  <dl class="shop-contact__list">
+    {%- if support_email != blank -%}
+      <div class="shop-contact__row">
+        <dt>{{ 'lamp.contact.email' | t }}</dt>
+        <dd><a href="mailto:{{ support_email }}">{{ support_email }}</a></dd>
+      </div>
+    {%- elsif request.design_mode -%}
+      <div class="shop-contact__row">
+        <dt>{{ 'lamp.contact.email' | t }}</dt>
+        <dd><span class="lamp-marker">[[Support-E-Mail — noch festzulegen]]</span></dd>
+      </div>
+    {%- endif -%}
+
+    {%- if bs.show_phone and shop.phone != blank -%}
+      <div class="shop-contact__row">
+        <dt>{{ 'lamp.contact.phone' | t }}</dt>
+        <dd><a href="tel:{{ shop.phone | remove: ' ' }}">{{ shop.phone }}</a></dd>
+      </div>
+    {%- endif -%}
+
+    {%- if bs.show_address and address.address1 != blank -%}
+      <div class="shop-contact__row">
+        <dt>{{ 'lamp.contact.address' | t }}</dt>
+        <dd>
+          {{ shop.name }}<br>
+          {{ address.address1 }}<br>
+          {%- if address.address2 != blank -%}{{ address.address2 }}<br>{%- endif -%}
+          {{ address.zip }} {{ address.city }}<br>
+          {{ address.country }}
+        </dd>
+      </div>
+    {%- elsif bs.show_address and request.design_mode -%}
+      <div class="shop-contact__row">
+        <dt>{{ 'lamp.contact.address' | t }}</dt>
+        <dd><span class="lamp-marker">[[Anschrift — in Shopify unter Einstellungen → Allgemein hinterlegen]]</span></dd>
+      </div>
+    {%- endif -%}
+
+    {%- if bs.response_time != blank -%}
+      <div class="shop-contact__row">
+        <dt>{{ 'lamp.contact.response_time' | t }}</dt>
+        <dd>{{ bs.response_time }}</dd>
+      </div>
+    {%- elsif request.design_mode -%}
+      <div class="shop-contact__row">
+        <dt>{{ 'lamp.contact.response_time' | t }}</dt>
+        <dd><span class="lamp-marker">[[Reaktionszeit — noch festzulegen]]</span></dd>
+      </div>
+    {%- endif -%}
+  </dl>
+</div>
+
+{% stylesheet %}
+  .shop-contact {
+    width: 100%;
+  }
+
+  .shop-contact__heading {
+    margin: 0 0 var(--margin-lg);
+  }
+
+  .shop-contact__list {
+    margin: 0;
+    display: grid;
+  }
+
+  .shop-contact__row {
+    display: grid;
+    grid-template-columns: minmax(7rem, 30%) 1fr;
+    gap: var(--gap-lg);
+    padding-block: var(--padding-sm);
+    border-block-end: 1px solid var(--color-line);
+  }
+
+  .shop-contact__row dt {
+    color: var(--color-text-secondary);
+  }
+
+  .shop-contact__row dd {
+    margin: 0;
+  }
+
+  .shop-contact__row a {
+    color: inherit;
+    text-underline-offset: 3px;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Kontaktdaten",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Anschrift und Telefon kommen aus Shopify (Einstellungen → Allgemein)."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Support-E-Mail",
+      "info": "Leer lassen, bis die Adresse feststeht."
+    },
+    {
+      "type": "text",
+      "id": "response_time",
+      "label": "Reaktionszeit",
+      "info": "Nur eintragen, was realistisch eingehalten wird."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone",
+      "label": "Telefon aus Shopify zeigen",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_address",
+      "label": "Anschrift aus Shopify zeigen",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kontaktdaten"
+    }
+  ]
+}
+{% endschema %}

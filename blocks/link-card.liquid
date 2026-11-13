@@ -1,0 +1,84 @@
+{%- doc -%}
+  Schlichte Link-Karte (Überschrift, kurzer Text, ganze Fläche klickbar).
+  Für Übersichtsseiten wie „Hilfe“.
+{%- enddoc -%}
+
+{%- assign bs = block.settings -%}
+
+{%- if bs.link != blank -%}
+  <a class="link-card" href="{{ bs.link }}" {{ block.shopify_attributes }}>
+    <span class="link-card__heading h4">{{ bs.heading }}</span>
+    {%- if bs.text != blank -%}
+      <span class="link-card__text">{{ bs.text }}</span>
+    {%- endif -%}
+    <span class="link-card__arrow" aria-hidden="true">→</span>
+  </a>
+{%- elsif request.design_mode -%}
+  <div class="link-card" {{ block.shopify_attributes }}>
+    <span class="link-card__heading h4">{{ bs.heading }}</span>
+    <span class="lamp-marker">[[Link fehlt — Seite „{{ bs.heading }}“ noch nicht angelegt oder nicht zugewiesen]]</span>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .link-card {
+    display: grid;
+    align-content: start;
+    gap: var(--gap-xs);
+    flex: 1 1 14rem;
+    min-height: 9rem;
+    padding: var(--padding-2xl);
+    border: 1px solid var(--color-line);
+    color: var(--color-foreground);
+    text-decoration: none;
+    transition: border-color var(--animation-speed) var(--animation-easing);
+  }
+
+  a.link-card:hover {
+    border-color: var(--color-foreground);
+  }
+
+  .link-card__heading {
+    margin: 0;
+  }
+
+  .link-card__text {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .link-card__arrow {
+    align-self: end;
+    margin-block-start: var(--margin-xs);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Link-Karte",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift",
+      "default": "Überschrift"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Link-Karte"
+    }
+  ]
+}
+{% endschema %}

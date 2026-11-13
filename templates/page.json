@@ -12,24 +12,14 @@
     "main": {
       "type": "main-page",
       "blocks": {
-        "heading": {
+        "title": {
           "type": "text",
-          "name": "t:names.title",
           "settings": {
             "text": "<h1>{{ closest.page.title }}</h1>",
-            "width": "100%",
+            "type_preset": "h1",
+            "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-heading--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -37,21 +27,21 @@
           },
           "blocks": {}
         },
-        "page-content": {
+        "content": {
           "type": "page-content",
           "settings": {},
           "blocks": {}
         }
       },
       "block_order": [
-        "heading",
-        "page-content"
+        "title",
+        "content"
       ],
       "settings": {
         "content_direction": "column",
-        "gap": 32,
-        "padding-block-start": 40,
-        "padding-block-end": 80
+        "gap": 24,
+        "padding-block-start": 48,
+        "padding-block-end": 96
       }
     }
   },

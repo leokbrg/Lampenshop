@@ -142,5 +142,21 @@
   "product.dimension_drawing_alt": {
     "de": "Maßzeichnung",
     "en": "Dimensional drawing"
+  },
+  "contact.email": {
+    "de": "E-Mail",
+    "en": "Email"
+  },
+  "contact.phone": {
+    "de": "Telefon",
+    "en": "Phone"
+  },
+  "contact.address": {
+    "de": "Anschrift",
+    "en": "Address"
+  },
+  "contact.response_time": {
+    "de": "Reaktionszeit",
+    "en": "Response time"
   }
 }
