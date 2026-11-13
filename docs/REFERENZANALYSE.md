@@ -4,6 +4,8 @@ Stand: 13.11.2026. Grundlage: Screenshots der Startseite und je einer Produktsei
 
 Wichtig vorab: Die sieben Markenshops verkaufen keine Leuchten, und die meisten sind Marken mit wenigen Hero-Produkten. Übernommen wird deshalb **Struktur und Qualitätsniveau**, nicht Optik, Farben oder Texte. Und alles muss für 15–20 Modelle als **Vorlage** funktionieren, nicht als Einzelanfertigung pro Produkt.
 
+**Screenshots:** `docs/referenzen/<shop>-startseite.jpg` und `<shop>-produktseite.jpg` (ESN, BALLS, Studio Neat, Editors Keys, Turtle Beach, Bruvi, MVMT, Lampenwelt). Bei jeder Design- und Prüfrunde die passenden Bilder öffnen und vergleichen — Struktur und Qualitätsniveau, nicht Optik.
+
 ---
 
 ## 1. Was alle guten Shops gemeinsam haben
