@@ -36,6 +36,18 @@
     },
     "service": {
       "payment_heading": "Payment methods"
+    },
+    "sort": {
+      "recommended": "Recommended",
+      "relevance": "Relevance",
+      "newest": "Newest",
+      "price_ascending": "Price, low to high",
+      "price_descending": "Price, high to low"
+    },
+    "collection": {
+      "empty_title": "There are currently no lamps in this category.",
+      "empty_link": "View all lamps",
+      "subnav_label": "Subcategories"
     }
   },
   "blocks": {

@@ -126,6 +126,19 @@
     },
     {
       "type": "select",
+      "id": "columns_desktop",
+      "label": "Spalten (Desktop)",
+      "info": "Feste Spaltenzahl ab 1200 px. „Automatisch“ richtet sich nach der Kartengröße.",
+      "options": [
+        { "value": "auto", "label": "Automatisch" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "auto",
+      "visible_if": "{{ section.settings.layout_type == 'grid' }}"
+    },
+    {
+      "type": "select",
       "id": "mobile_product_card_size",
       "label": "t:settings.mobile_card_size",
       "options": [

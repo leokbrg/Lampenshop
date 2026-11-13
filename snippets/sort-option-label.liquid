@@ -1,0 +1,26 @@
+{%- doc -%}
+  Beschriftung einer Sortieroption. Die vier im Shop angebotenen Optionen bekommen
+  eigene, übersetzbare Namen; alles andere behält den Namen aus Shopify.
+
+  @param {object} option - Eintrag aus collection.sort_options bzw. search.sort_options
+
+  @example
+  {% render 'sort-option-label', option: option %}
+{%- enddoc -%}
+
+{%- liquid
+  case option.value
+    when 'manual'
+      echo 'lamp.sort.recommended' | t
+    when 'relevance'
+      echo 'lamp.sort.relevance' | t
+    when 'created-descending'
+      echo 'lamp.sort.newest' | t
+    when 'price-ascending'
+      echo 'lamp.sort.price_ascending' | t
+    when 'price-descending'
+      echo 'lamp.sort.price_descending' | t
+    else
+      echo option.name
+  endcase
+-%}

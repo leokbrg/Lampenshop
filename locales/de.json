@@ -36,6 +36,18 @@
     },
     "service": {
       "payment_heading": "Zahlungsarten"
+    },
+    "sort": {
+      "recommended": "Empfohlen",
+      "relevance": "Relevanz",
+      "newest": "Neu",
+      "price_ascending": "Preis aufsteigend",
+      "price_descending": "Preis absteigend"
+    },
+    "collection": {
+      "empty_title": "In dieser Kategorie sind gerade keine Leuchten verfügbar.",
+      "empty_link": "Alle Leuchten ansehen",
+      "subnav_label": "Unterkategorien"
     }
   },
   "blocks": {
@@ -135,8 +147,8 @@
     "continue_shopping": "Weiter einkaufen",
     "log_in_html": "Hast du ein Konto? <a href=\"{{ link }}\">Logge dich ein</a>, damit es beim Checkout schneller geht.",
     "see_items": {
-      "one": "{{ count }} Artikel anzeigen",
-      "other": "{{ count }} Artikel ansehen"
+      "one": "{{ count }} Produkt anzeigen",
+      "other": "{{ count }} Produkte anzeigen"
     },
     "view_all": "Alle ansehen",
     "add": "Hinzufügen",
@@ -232,8 +244,8 @@
     "product_card_placeholder": "Produkttitel",
     "product_count": "Produktanzahl",
     "item_count": {
-      "one": "{{ count }} Artikel",
-      "other": "{{ count }} Artikel"
+      "one": "{{ count }} Produkt",
+      "other": "{{ count }} Produkte"
     },
     "errors": "Fehler",
     "price_from": "Ab {{ price }}",

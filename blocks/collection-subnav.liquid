@@ -1,0 +1,151 @@
+{%- doc -%}
+  Unterkategorie-Pills für Collection-Seiten.
+  Liest die Struktur aus dem Hauptmenü (Shopify Admin), nichts ist im Theme hinterlegt:
+  Auf einer Hauptkategorie erscheinen deren Unterpunkte, auf einer Unterkategorie dieselben
+  Geschwister mit markiertem aktivem Eintrag. Kategorien ohne Unterpunkte zeigen nichts.
+{%- enddoc -%}
+
+{%- liquid
+  assign current = closest.collection | default: collection
+  assign menu = block.settings.menu
+  assign parent_link = null
+
+  for link in menu.links
+    if link.links.size == 0
+      continue
+    endif
+
+    if link.type == 'collection_link' and link.object.handle == current.handle
+      assign parent_link = link
+      break
+    endif
+
+    for child in link.links
+      if child.type == 'collection_link' and child.object.handle == current.handle
+        assign parent_link = link
+        break
+      endif
+    endfor
+
+    if parent_link != null
+      break
+    endif
+  endfor
+-%}
+
+{%- if parent_link != null -%}
+  <nav
+    class="collection-subnav"
+    aria-label="{{ 'lamp.collection.subnav_label' | t }}"
+    {{ block.shopify_attributes }}
+  >
+    <ul class="collection-subnav__list list-unstyled" role="list">
+      {%- for child in parent_link.links -%}
+        {%- liquid
+          assign is_current = false
+          if child.type == 'collection_link' and child.object.handle == current.handle
+            assign is_current = true
+          endif
+        -%}
+        <li>
+          <a
+            class="collection-subnav__link{% if is_current %} collection-subnav__link--current{% endif %}"
+            href="{{ child.url }}"
+            {% if is_current %}
+              aria-current="page"
+            {% endif %}
+          >
+            {{- child.title -}}
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </nav>
+{%- elsif request.design_mode and menu == blank -%}
+  <p class="lamp-marker" {{ block.shopify_attributes }}>
+    [[Unterkategorien — Menü „main-menu“ fehlt in Shopify Admin]]
+  </p>
+{%- endif -%}
+
+{% stylesheet %}
+  .collection-subnav {
+    width: 100%;
+    /* auf schmalen Screens bis an den Seitenrand scrollen */
+    margin-inline: calc(var(--page-margin) * -1);
+    padding-inline: var(--page-margin);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .collection-subnav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .collection-subnav__list {
+    display: flex;
+    gap: var(--gap-xs);
+    margin: 0;
+    width: max-content;
+  }
+
+  @media screen and (min-width: 750px) {
+    .collection-subnav {
+      margin-inline: 0;
+      padding-inline: 0;
+      overflow: visible;
+    }
+
+    .collection-subnav__list {
+      flex-wrap: wrap;
+      width: auto;
+    }
+  }
+
+  .collection-subnav__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--minimum-touch-target);
+    padding-inline: var(--padding-lg);
+    border: 1px solid var(--color-line);
+    border-radius: var(--style-border-radius-pills);
+    color: var(--color-foreground);
+    font-size: 0.875rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: border-color var(--animation-speed) var(--animation-easing);
+  }
+
+  .collection-subnav__link:hover {
+    border-color: var(--color-foreground);
+  }
+
+  .collection-subnav__link--current {
+    background-color: var(--color-foreground);
+    border-color: var(--color-foreground);
+    color: var(--color-background);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Unterkategorien",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Zeigt die Unterpunkte der aktuellen Kategorie aus dem gewählten Menü als Pills."
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menü",
+      "default": "main-menu"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Unterkategorien"
+    }
+  ]
+}
+{% endschema %}

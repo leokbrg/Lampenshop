@@ -98,5 +98,37 @@
   "service.payment_heading": {
     "de": "Zahlungsarten",
     "en": "Payment methods"
+  },
+  "sort.recommended": {
+    "de": "Empfohlen",
+    "en": "Recommended"
+  },
+  "sort.relevance": {
+    "de": "Relevanz",
+    "en": "Relevance"
+  },
+  "sort.newest": {
+    "de": "Neu",
+    "en": "Newest"
+  },
+  "sort.price_ascending": {
+    "de": "Preis aufsteigend",
+    "en": "Price, low to high"
+  },
+  "sort.price_descending": {
+    "de": "Preis absteigend",
+    "en": "Price, high to low"
+  },
+  "collection.empty_title": {
+    "de": "In dieser Kategorie sind gerade keine Leuchten verfügbar.",
+    "en": "There are currently no lamps in this category."
+  },
+  "collection.empty_link": {
+    "de": "Alle Leuchten ansehen",
+    "en": "View all lamps"
+  },
+  "collection.subnav_label": {
+    "de": "Unterkategorien",
+    "en": "Subcategories"
   }
 }

@@ -45,6 +45,18 @@
     },
     "service": {
       "payment_heading": "Payment methods"
+    },
+    "sort": {
+      "recommended": "Recommended",
+      "relevance": "Relevance",
+      "newest": "Newest",
+      "price_ascending": "Price, low to high",
+      "price_descending": "Price, high to low"
+    },
+    "collection": {
+      "empty_title": "There are currently no lamps in this category.",
+      "empty_link": "View all lamps",
+      "subnav_label": "Subcategories"
     }
   },
   "accessibility": {
@@ -148,9 +160,9 @@
     // Button to expand hidden product variant options
     "show_all_options": "Show all options",
     "see_items": {
-      "one": "See {{ count }} item",
+      "one": "Show {{ count }} product",
       // Button to view filtered product results and close filter dialog
-      "other": "See {{ count }} items"
+      "other": "Show {{ count }} products"
     },
     "show_filters": "Filter",
     "show_less": "Show less",
@@ -265,8 +277,8 @@
     "inventory_in_stock": "In stock",
     "inventory_out_of_stock": "Out of stock",
     "item_count": {
-      "one": "{{ count }} item",
-      "other": "{{ count }} items"
+      "one": "{{ count }} product",
+      "other": "{{ count }} products"
     },
     "item_count_cutoff": "More than {{ count }} items",
     "language": "Language",

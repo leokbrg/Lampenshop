@@ -21,9 +21,15 @@
 >
   {% liquid
     assign default_sort_by = results.default_sort_by
+
+    # Lampenshop: nur diese Sortierungen anbieten (plus die gerade aktive, falls sie nicht dazugehört)
+    assign lamp_sort_values = 'manual,relevance,created-descending,price-ascending,price-descending' | split: ','
+
     for option in results.sort_options
       if option.value == sort_by
-        assign status = option.name
+        capture status
+          render 'sort-option-label', option: option
+        endcapture
       endif
     endfor
   %}
@@ -45,13 +51,17 @@
         {% endif %}
       >
         {% for option in results.sort_options %}
+          {%- unless lamp_sort_values contains option.value or option.value == sort_by -%}
+            {%- continue -%}
+          {%- endunless -%}
+          {%- capture option_label -%}{% render 'sort-option-label', option: option %}{%- endcapture -%}
           <option
             value="{{ option.value }}"
             {% if option.value == sort_by %}
               selected
             {% endif %}
           >
-            {{ option.name }}
+            {{ option_label }}
           </option>
         {% endfor %}
       </select>
@@ -108,6 +118,10 @@
       >
         <div class="sorting-filter__options-inner">
           {% for option in results.sort_options %}
+          {%- unless lamp_sort_values contains option.value or option.value == sort_by -%}
+            {%- continue -%}
+          {%- endunless -%}
+          {%- capture option_label -%}{% render 'sort-option-label', option: option %}{%- endcapture -%}
             <label
               for="sort-option-{{ option.value }}-{{ section_id }}"
             >
@@ -126,7 +140,7 @@
                   {% endif %}
                   value="{{ option.value }}"
                   class="sorting-filter__input"
-                  data-option-name="{{ option.name }}"
+                  data-option-name="{{ option_label }}"
                   {% if option.value == sort_by %}
                     checked
                   {% endif %}
@@ -135,7 +149,7 @@
                 <span class="svg-wrapper icon-checkmark sorting-filter__checkmark">
                   {{- 'icon-checkmark.svg' | inline_asset_content -}}
                 </span>
-                <span class="sorting-filter__label">{{ option.name }}</span>
+                <span class="sorting-filter__label">{{ option_label }}</span>
               </div>
             </label>
           {% endfor %}

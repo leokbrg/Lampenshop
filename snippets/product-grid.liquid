@@ -28,6 +28,26 @@
           --product-grid-columns-desktop: repeat(auto-fill, minmax({{ product_card_size }}, 1fr));
         }
 
+        {% comment %} Lampenshop: feste Spaltenzahl statt Kartengröße, wenn eingestellt {% endcomment %}
+        {% assign fixed_columns = section.settings.columns_desktop | default: 'auto' %}
+        {% if fixed_columns != 'auto' %}
+          .product-grid--{{ section.id }}:is(.product-grid--grid):not([product-grid-view='zoom-out']) {
+            --product-grid-columns-desktop: repeat(2, minmax(0, 1fr));
+          }
+
+          @media screen and (min-width: 990px) {
+            .product-grid--{{ section.id }}:is(.product-grid--grid):not([product-grid-view='zoom-out']) {
+              --product-grid-columns-desktop: repeat(3, minmax(0, 1fr));
+            }
+          }
+
+          @media screen and (min-width: 1200px) {
+            .product-grid--{{ section.id }}:is(.product-grid--grid):not([product-grid-view='zoom-out']) {
+              --product-grid-columns-desktop: repeat({{ fixed_columns }}, minmax(0, 1fr));
+            }
+          }
+        {% endif %}
+
 
       {% when 'organic' %}
         {% assign large_span = 2 %}
@@ -108,12 +128,24 @@
       {% render 'price-styles' %}
       {% render 'product-card-gallery-zoom-details-styles' %}
       <div class="main-collection-grid__empty">
-        <h2 class="main-collection-grid__empty-title h2">
-          {{ 'content.no_products_found' | t }}
-        </h2>
-        <p>
-          {{ 'content.use_fewer_filters_html' | t: link: collection.url, class: 'main-collection-grid__empty-link' }}
-        </p>
+        {%- if collection != blank and collection.all_products_count == 0 -%}
+          {%- comment -%} Lampenshop: wirklich leere Kategorie (nicht nur leer gefiltert) {%- endcomment -%}
+          <p class="main-collection-grid__empty-title h4">
+            {{ 'lamp.collection.empty_title' | t }}
+          </p>
+          <p>
+            <a class="main-collection-grid__empty-link" href="{{ routes.all_products_collection_url }}">
+              {{- 'lamp.collection.empty_link' | t -}}
+            </a>
+          </p>
+        {%- else -%}
+          <h2 class="main-collection-grid__empty-title h2">
+            {{ 'content.no_products_found' | t }}
+          </h2>
+          <p>
+            {{ 'content.use_fewer_filters_html' | t: link: collection.url, class: 'main-collection-grid__empty-link' }}
+          </p>
+        {%- endif -%}
       </div>
     {% else %}
       {% if enable_infinite_scroll %}
