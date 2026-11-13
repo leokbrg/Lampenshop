@@ -142,6 +142,11 @@ Feld-Set:
 | WEEE-Reg.-Nr. | Text | ja |
 | Sicherheitshinweise / Anleitung | Datei | ja |
 | Lieferzeit | Text | ja |
+| Kurzbeschreibung (eine Zeile) | Text | ja |
+| Vorteile (max. 3) | Liste Text | ja |
+| Raumbild | Datei (Bild) | ja |
+| Maßzeichnung | Datei (Bild) | ja |
+| Lieferumfang | mehrzeiliger Text | ja |
 | Versand aus (Land) | Text | intern |
 | Lieferant | Text | intern |
 | Rücksendeadresse | Text | intern |
@@ -387,7 +392,15 @@ Jede technische und gestalterische Entscheidung dient diesem Ziel.
 
 ---
 
-# 20. AKTUELLER STAND DES THEMES
+# 20. QUALITÄTSMASSSTAB
+
+`docs/REFERENZANALYSE.md` ist der Maßstab für Aufbau und Qualität von Startseite und Produktseite. Abschnitt 5 legt die Module fest, Abschnitt 4 was nicht übernommen wird, Abschnitt 6 die Prüffragen für jede visuelle Prüfung.
+
+Kurzfassung: Einheitliche Produktbilder vor allem anderen. Erster Bildschirm führt in Kategorien. Pro Sektion eine Aussage. Kauf-Button ist das auffälligste Element. Lieferzeit direkt am Button. Produkt-Raster und großflächige Stimmungsbilder wechseln sich ab. Jede Seite endet mit einem Weg weiter.
+
+---
+
+# 21. AKTUELLER STAND DES THEMES
 
 Bereits vorhanden (nicht neu bauen, sondern erweitern):
 

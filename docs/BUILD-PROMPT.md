@@ -4,7 +4,7 @@ Diesen Text komplett in Claude Code einfügen, im Repo `leokbrg/Lampenshop`.
 
 ---
 
-Du baust in diesem Repo den vollständigen Shopify-Shop für einen Leuchtenshop auf Basis des vorhandenen Horizon-Themes. Lies zuerst `CLAUDE.md` vollständig — sie gilt für alles hier und hat Vorrang vor diesem Prompt, wenn sich etwas widerspricht.
+Du baust in diesem Repo den vollständigen Shopify-Shop für einen Leuchtenshop auf Basis des vorhandenen Horizon-Themes. Lies zuerst `CLAUDE.md` und `docs/REFERENZANALYSE.md` vollständig — sie gilt für alles hier und hat Vorrang vor diesem Prompt, wenn sich etwas widerspricht.
 
 Ziel dieser Sitzung: Ein Shop, der in der Vorschau vollständig und glaubwürdig aussieht — mit Platzhalter-Produkten und Stockfotos —, dessen Struktur aber schon die echte ist. Wenn später echte Produkte kommen, wird nur Content getauscht, nicht das Theme umgebaut.
 
@@ -12,7 +12,7 @@ Ziel dieser Sitzung: Ein Shop, der in der Vorschau vollständig und glaubwürdig
 
 - Sortiment: **Innenleuchten**, **Außenleuchten**, **Schreibtischleuchten** als drei eigene Hauptkategorien. Unterkategorien und Handles stehen in `CLAUDE.md`, Abschnitt 3.
 - Designrichtung: skandinavisch-warm, Tokens stehen in `CLAUDE.md`, Abschnitt 2.
-- Strukturvorlage: neona.store. Übernimm von dort **nur Struktur**: Mega-Menü nach Bauart unter Innen/Außen, Kategorie-Kacheln auf der Startseite, Kurzzeile mit Nutzen auf der Produktkarte, verständliche Filter, Sortierung, Ratgeber-Bereich im Footer. Keine Farben, Layouts, Texte oder Bilder von dort.
+- Qualitätsmaßstab: `docs/REFERENZANALYSE.md` (sieben Shops). Zusätzliche Strukturvorlage für Leuchten: neona.store. Übernimm von dort **nur Struktur**: Mega-Menü nach Bauart unter Innen/Außen, Kategorie-Kacheln auf der Startseite, Kurzzeile mit Nutzen auf der Produktkarte, verständliche Filter, Sortierung, Ratgeber-Bereich im Footer. Keine Farben, Layouts, Texte oder Bilder von dort.
 - **Nicht** von neona übernehmen: Countdowns, „Fast ausverkauft“-Badges, durchgestrichene Preise und Rabatt-Prozente, Kundenzahlen, Sternebewertungen zum Launch, Garantie- und Lieferversprechen, Versandschutz-Upsell im Warenkorb, Sprachumschalter. Das widerspricht `CLAUDE.md` Abschnitte 11 und 12 oder ist nicht entschieden.
 - Theme-Arbeit passiert im Repo. Produkte, Collections, Menüs, Seiten, Metafeld-Definitionen und Richtlinien leben in Shopify Admin — die kannst du nicht direkt anlegen. Dafür erstellst du Import-Dateien und eine Schritt-für-Schritt-Anleitung für mich (Phase 9).
 - Jeder Push auf `main` landet im unveröffentlichten Theme-Entwurf. Nie etwas veröffentlichen.
@@ -63,16 +63,13 @@ Ziel dieser Sitzung: Ein Shop, der in der Vorschau vollständig und glaubwürdig
 
 ## Phase 4 — Startseite (routet, verkauft nicht)
 
-Reihenfolge:
+Reihenfolge und Module exakt nach `docs/REFERENZANALYSE.md`, Abschnitt 5 „Startseite“. Zusätzlich:
 
-1. **Hero**: großes Stimmungsbild, H1 kurz, zwei Buttons „Innenleuchten“ und „Außenleuchten“.
-2. **Hauptkategorien**: drei große Kacheln Innen · Außen · Schreibtisch.
-3. **Nach Bauart**: Kacheln Decke, Pendel, Wand, Steh, Tisch, Außen-Wand, Weg (Raster, mobil horizontal scrollbar).
-4. **Neu im Sortiment**: Produktliste aus Collection `neu`, 4 Spalten Desktop.
-5. **Marke**: Bild + kurzer Text. Text als Marker `[[Markentext — noch festzulegen]]`.
-6. **Schreibtischleuchten**: eigene Produktliste mit kurzer Einleitung.
-7. **Service-Leiste**: nur Aussagen, die sicher stimmen — „Technische Daten vollständig angegeben“, „Energielabel und Datenblatt zu jeder Leuchte“, Zahlungsarten-Icons (aus Shopify). Keine Lieferzeit, keine Garantie, keine Kundenzahl.
-8. **Ratgeber-Teaser**: 3 Karten zu Blogartikeln (Blog `ratgeber`), z. B. Lichtfarbe/Kelvin, Lumen pro Raum, IP-Schutzarten außen. Leer → Section blendet sich aus.
+- Der Umschalter Innen/Außen bei „Nach Bauart“ als Tabs ohne Seitenwechsel, mobil wischbar.
+- Lifestyle-Band und Hero mit Bild-Einstellung im Editor, Stockfoto als Platzhalter.
+- Service-Leiste nur mit den Aussagen aus Abschnitt 5 „Service-Aussagen“, alles andere als Marker.
+- Ratgeber-Teaser blendet sich aus, solange der Blog `ratgeber` leer ist.
+- Keine Sterne, keine Bestseller-Badges, keine Rabattflächen, keine Presse-Logos (Abschnitt 4 der Analyse).
 
 ## Phase 5 — Collection-Seite (wichtigste Seite)
 
@@ -86,13 +83,13 @@ Reihenfolge:
 
 ## Phase 6 — Produktseite
 
-Bestehende Struktur aus `templates/product.json` vervollständigen:
+Vorlage exakt nach `docs/REFERENZANALYSE.md`, Abschnitt 5 „Produktseite“: Kaufbereich und die zehn Module darunter. Bestehende Blöcke aus `CLAUDE.md` Abschnitt 20 wiederverwenden. Zusätzlich:
 
-- Above the fold (Desktop): Galerie links mit sichtbaren Thumbnails, rechts Breadcrumb, Titel, Bauart-Zeile, Preis mit Steuer-/Versandhinweis, Energieklasse mit Label und Datenblatt, kurze Value Proposition (`custom.kurzbeschreibung`, neues Metafeld — leer → nichts), Varianten als Swatches, Verfügbarkeit, Lieferzeit, Menge, In den Warenkorb, Express-Checkout.
-- Mobil: Galerie als Wischgalerie mit Zähler, Kaufbereich direkt darunter, Sticky-Add-to-Cart-Leiste beim Scrollen.
-- Darunter Accordions: Beschreibung · Technische Daten · Maße (Bild `custom.masszeichnung`, falls vorhanden) · Lieferumfang (`custom.lieferumfang`) · Versand & Rückgabe (Text aus Shopify-Richtlinien bzw. Seite, nicht erfinden) · Hersteller & Sicherheit.
-- Abschnitt „Passt dazu“: Shopify-Produktempfehlungen.
-- Abschnitt „Zuletzt angesehen“ optional, nur wenn sauber ohne App.
+- Jedes Modul liest Metafelder und blendet sich komplett aus, wenn sie leer sind (im Editor Marker). Keine Inhalte pro Produkt im Template hardcoden.
+- Neue Theme-Blöcke: Kennzahlen-Leiste mit Icons, Lichtfarben-Skala (Position aus `custom.farbtemperatur`, 2700 K warm bis 6500 K kalt), Häkchen-Vorteile, Vergleich in der Bauart (Modelle derselben Collection, max. 4, Werte nur aus Metafeldern), Downloads, Kategorie-Pills, Sticky-Kaufleiste.
+- FAQ nach Bauart als Metaobjekt-Definition `faq_bauart` (Frage, Antwort, Bauart) — Definition in `docs/ADMIN-SETUP.md` beschreiben, Inhalte als Marker.
+- Neue Metafelder: `kurzbeschreibung` (einzeiliger Text), `vorteile` (Liste Text, max. 3), `raumbild` (Datei, Bild), `masszeichnung` (Datei, Bild), `lieferumfang` (mehrzeiliger Text). In `CLAUDE.md` Abschnitt 5 nachtragen.
+- Mobil: Galerie wischbar mit Zähler, Sticky-Kaufleiste, Accordions geschlossen.
 - Beschreibungsschema für alle Produkte: Einleitung (2–3 Sätze), Licht & Wirkung, Material & Verarbeitung, Einsatz. In `docs/BESCHREIBUNGSSCHEMA.md` festhalten.
 
 ## Phase 7 — Warenkorb, Seiten, Richtlinien
@@ -154,6 +151,7 @@ Das liegt fast alles in Shopify Admin. Du bereitest es vor und ergänzt `docs/AD
 
 - `shopify theme check` → keine neuen Offenses.
 - JSON aller Templates valide.
+- Jede Seite gegen die acht Fragen aus `docs/REFERENZANALYSE.md` Abschnitt 6 prüfen.
 - Visuell prüfen, falls du die Vorschau rendern kannst (Browser-Tool oder `shopify theme dev`): Desktop 1440 und Mobil 375 für Startseite, Collection mit vollem Raster, Produktseite, Warenkorb, Navigation, Filter-Drawer, Suche. Wenn du nicht rendern kannst: ausdrücklich sagen, dass nicht visuell geprüft wurde, und mir eine Liste der Seiten und Breakpoints geben, von denen ich Screenshots schicken soll.
 - Nach `[` in allen Templates und Content-Dateien suchen und jede Fundstelle als bewussten Marker bestätigen oder entfernen.
 
