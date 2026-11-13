@@ -147,6 +147,9 @@ Feld-Set:
 | Raumbild | Datei (Bild) | ja |
 | Maßzeichnung | Datei (Bild) | ja |
 | Lieferumfang | mehrzeiliger Text | ja |
+| Geeignet für (Räume) | Liste Text | ja |
+| Serie | Text | ja |
+| Passende Leuchtmittel | Produktreferenz (Liste) | ja |
 | Versand aus (Land) | Text | intern |
 | Lieferant | Text | intern |
 | Rücksendeadresse | Text | intern |
@@ -163,7 +166,7 @@ Interne Felder (Lieferant, Versandland, Rücksendeadresse) nie im Frontend ausge
 
 Die Collection-Seite ist die wichtigste Seite im Shop.
 
-Produktkarte zeigt: Bild auf einheitlichem Hintergrund, Modellname, Kurzzeile zur Bauart, Preis, Varianten-Indikator, Verfügbarkeit, Energieeffizienzklasse.
+Produktkarte zeigt: Bild auf einheitlichem Hintergrund (Hover: Raumbild mit Licht an), Modellname, Kurzzeile zur Bauart, Preis, Lieferzeit, Varianten-Indikator, Verfügbarkeit, Energieeffizienzklasse.
 
 Die Karte muss zwanzigmal nebeneinander funktionieren, nicht einmal allein. Immer mit vollem Raster prüfen, nie mit drei Testprodukten.
 
@@ -230,7 +233,7 @@ Header sticky mit subtilem kompaktem Zustand. Suche und Cart immer erreichbar, a
 
 SHOP — Kategorien
 HILFE — Kontakt, Versand, Rückgabe, FAQ
-RECHTLICHES — Impressum, Datenschutzerklärung, AGB, Widerrufsbelehrung, Zahlungsarten
+RECHTLICHES — Impressum, Datenschutzerklärung, AGB, Widerrufsbelehrung, Zahlungsarten, Entsorgung & Rücknahme (ElektroG/BattG-Hinweise, Text vom Rechtsdienstleister)
 
 Alle Links auf echte Shopify-Seiten oder Richtlinien. Fehlende Seiten als sichtbarer Marker `[[NAME — noch festzulegen]]`, nicht verstecken.
 
@@ -394,9 +397,9 @@ Jede technische und gestalterische Entscheidung dient diesem Ziel.
 
 # 20. QUALITÄTSMASSSTAB
 
-`docs/REFERENZANALYSE.md` ist der Maßstab für Aufbau und Qualität von Startseite und Produktseite. Abschnitt 5 legt die Module fest, Abschnitt 4 was nicht übernommen wird, Abschnitt 6 die Prüffragen für jede visuelle Prüfung.
+`docs/REFERENZANALYSE.md` ist der Maßstab für Aufbau und Qualität von Startseite und Produktseite. Abschnitt 6 legt die Module fest, Abschnitt 5 zeigt die leuchtenspezifischen Muster (Lampenwelt), Abschnitt 4 was nicht übernommen wird, Abschnitt 7 die Prüffragen für jede visuelle Prüfung.
 
-Kurzfassung: Einheitliche Produktbilder vor allem anderen. Erster Bildschirm führt in Kategorien. Pro Sektion eine Aussage. Kauf-Button ist das auffälligste Element. Lieferzeit direkt am Button. Produkt-Raster und großflächige Stimmungsbilder wechseln sich ab. Jede Seite endet mit einem Weg weiter.
+Kurzfassung: Einheitliche Produktbilder mit festen Bildrollen vor allem anderen (freigestellt, Licht an, Maßzeichnung). Leuchtmittel enthalten ja/nein und Sockel immer am Kaufbutton. Erster Bildschirm führt in Kategorien. Pro Sektion eine Aussage. Kauf-Button ist das auffälligste Element. Lieferzeit direkt am Button. Produkt-Raster und großflächige Stimmungsbilder wechseln sich ab. Jede Seite endet mit einem Weg weiter.
 
 ---
 

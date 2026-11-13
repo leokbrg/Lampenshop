@@ -12,7 +12,7 @@ Ziel dieser Sitzung: Ein Shop, der in der Vorschau vollständig und glaubwürdig
 
 - Sortiment: **Innenleuchten**, **Außenleuchten**, **Schreibtischleuchten** als drei eigene Hauptkategorien. Unterkategorien und Handles stehen in `CLAUDE.md`, Abschnitt 3.
 - Designrichtung: skandinavisch-warm, Tokens stehen in `CLAUDE.md`, Abschnitt 2.
-- Qualitätsmaßstab: `docs/REFERENZANALYSE.md` (sieben Shops). Zusätzliche Strukturvorlage für Leuchten: neona.store. Übernimm von dort **nur Struktur**: Mega-Menü nach Bauart unter Innen/Außen, Kategorie-Kacheln auf der Startseite, Kurzzeile mit Nutzen auf der Produktkarte, verständliche Filter, Sortierung, Ratgeber-Bereich im Footer. Keine Farben, Layouts, Texte oder Bilder von dort.
+- Qualitätsmaßstab: `docs/REFERENZANALYSE.md` (sieben Markenshops plus Lampenwelt als Leuchten-Referenz). Zusätzlich neona.store. Übernimm von dort **nur Struktur**: Mega-Menü nach Bauart unter Innen/Außen, Kategorie-Kacheln auf der Startseite, Kurzzeile mit Nutzen auf der Produktkarte, verständliche Filter, Sortierung, Ratgeber-Bereich im Footer. Keine Farben, Layouts, Texte oder Bilder von dort.
 - **Nicht** von neona übernehmen: Countdowns, „Fast ausverkauft“-Badges, durchgestrichene Preise und Rabatt-Prozente, Kundenzahlen, Sternebewertungen zum Launch, Garantie- und Lieferversprechen, Versandschutz-Upsell im Warenkorb, Sprachumschalter. Das widerspricht `CLAUDE.md` Abschnitte 11 und 12 oder ist nicht entschieden.
 - Theme-Arbeit passiert im Repo. Produkte, Collections, Menüs, Seiten, Metafeld-Definitionen und Richtlinien leben in Shopify Admin — die kannst du nicht direkt anlegen. Dafür erstellst du Import-Dateien und eine Schritt-für-Schritt-Anleitung für mich (Phase 9).
 - Jeder Push auf `main` landet im unveröffentlichten Theme-Entwurf. Nie etwas veröffentlichen.
@@ -63,11 +63,11 @@ Ziel dieser Sitzung: Ein Shop, der in der Vorschau vollständig und glaubwürdig
 
 ## Phase 4 — Startseite (routet, verkauft nicht)
 
-Reihenfolge und Module exakt nach `docs/REFERENZANALYSE.md`, Abschnitt 5 „Startseite“. Zusätzlich:
+Reihenfolge und Module exakt nach `docs/REFERENZANALYSE.md`, Abschnitt 6 „Startseite“. Zusätzlich:
 
 - Der Umschalter Innen/Außen bei „Nach Bauart“ als Tabs ohne Seitenwechsel, mobil wischbar.
 - Lifestyle-Band und Hero mit Bild-Einstellung im Editor, Stockfoto als Platzhalter.
-- Service-Leiste nur mit den Aussagen aus Abschnitt 5 „Service-Aussagen“, alles andere als Marker.
+- Service-Leiste nur mit den Aussagen aus Abschnitt 6 „Service-Aussagen“, alles andere als Marker.
 - Ratgeber-Teaser blendet sich aus, solange der Blog `ratgeber` leer ist.
 - Keine Sterne, keine Bestseller-Badges, keine Rabattflächen, keine Presse-Logos (Abschnitt 4 der Analyse).
 
@@ -77,25 +77,26 @@ Reihenfolge und Module exakt nach `docs/REFERENZANALYSE.md`, Abschnitt 5 „Star
 - Filter: Desktop links als Sidebar, mobil als Drawer mit „X Produkte anzeigen“-Button. Filter werden in Search & Discovery konfiguriert — das Theme muss Listen-, Bereichs- und Boolean-Filter sauber darstellen.
 - Sortierung: Empfohlen, Neu, Preis aufsteigend, Preis absteigend.
 - Raster: 3 Spalten Desktop mit Sidebar (4 ohne), 2 mobil. Mit **mindestens 16 Karten** prüfen.
-- Produktkarte (bestehend, erweitern): Bild 4:5 auf Sand-Fläche, zweites Bild bei Hover, Titel, Bauart-Zeile, Preis mit „inkl. MwSt.“-Logik aus Shopify, Energieklasse (klein), Farb-Swatches (max. 5 + „+n“), „Ausverkauft“-Badge nur wenn wirklich nicht verfügbar. Keine Sale-Badges.
+- Produktkarte (bestehend, erweitern): Bild 4:5 auf Sand-Fläche, zweites Bild bei Hover (Raumbild mit Licht an), Lieferzeit aus `custom.lieferzeit` klein unter dem Preis, Titel, Bauart-Zeile, Preis mit „inkl. MwSt.“-Logik aus Shopify, Energieklasse (klein), Farb-Swatches (max. 5 + „+n“), „Ausverkauft“-Badge nur wenn wirklich nicht verfügbar. Keine Sale-Badges.
 - Leere Collection: ruhiger Hinweis mit Link zu „Alle Leuchten“.
 - Pagination oder „Mehr laden“ — eins von beiden, konsistent.
 
 ## Phase 6 — Produktseite
 
-Vorlage exakt nach `docs/REFERENZANALYSE.md`, Abschnitt 5 „Produktseite“: Kaufbereich und die zehn Module darunter. Bestehende Blöcke aus `CLAUDE.md` Abschnitt 20 wiederverwenden. Zusätzlich:
+Vorlage exakt nach `docs/REFERENZANALYSE.md`, Abschnitt 6 „Produktseite“: Kaufbereich und alle Module darunter. Leuchtenspezifische Muster aus Abschnitt 5 (Lampenwelt) beachten. Bestehende Blöcke aus `CLAUDE.md` Abschnitt 21 wiederverwenden. Zusätzlich:
 
 - Jedes Modul liest Metafelder und blendet sich komplett aus, wenn sie leer sind (im Editor Marker). Keine Inhalte pro Produkt im Template hardcoden.
-- Neue Theme-Blöcke: Kennzahlen-Leiste mit Icons, Lichtfarben-Skala (Position aus `custom.farbtemperatur`, 2700 K warm bis 6500 K kalt), Häkchen-Vorteile, Vergleich in der Bauart (Modelle derselben Collection, max. 4, Werte nur aus Metafeldern), Downloads, Kategorie-Pills, Sticky-Kaufleiste.
+- Neue Theme-Blöcke: Lieferblock mit Leuchtmittel-Info und Button „Passende Leuchtmittel“, Geeignet-für-Icons, Aus der gleichen Serie (gleicher `custom.serie`-Wert, über Collection oder Suche lösen), Maße-Tabelle mit Zeichnung, Beratungs-Kasten, Kennzahlen-Leiste mit Icons, Lichtfarben-Skala (Position aus `custom.farbtemperatur`, 2700 K warm bis 6500 K kalt), Häkchen-Vorteile, Vergleich in der Bauart (Modelle derselben Collection, max. 4, Werte nur aus Metafeldern), Downloads, Kategorie-Pills, Sticky-Kaufleiste.
 - FAQ nach Bauart als Metaobjekt-Definition `faq_bauart` (Frage, Antwort, Bauart) — Definition in `docs/ADMIN-SETUP.md` beschreiben, Inhalte als Marker.
-- Neue Metafelder: `kurzbeschreibung` (einzeiliger Text), `vorteile` (Liste Text, max. 3), `raumbild` (Datei, Bild), `masszeichnung` (Datei, Bild), `lieferumfang` (mehrzeiliger Text). In `CLAUDE.md` Abschnitt 5 nachtragen.
+- Neue Metafelder stehen bereits in `CLAUDE.md` Abschnitt 5 (u. a. `kurzbeschreibung`, `vorteile`, `raumbild`, `masszeichnung`, `lieferumfang`, `geeignet_fuer`, `serie`, `passende_leuchtmittel`).
+- Galerie: feste Bildrollen nach Abschnitt 6 der Analyse; Desktop optional als 2-Spalten-Raster mit „Weitere Bilder anzeigen“.
 - Mobil: Galerie wischbar mit Zähler, Sticky-Kaufleiste, Accordions geschlossen.
 - Beschreibungsschema für alle Produkte: Einleitung (2–3 Sätze), Licht & Wirkung, Material & Verarbeitung, Einsatz. In `docs/BESCHREIBUNGSSCHEMA.md` festhalten.
 
 ## Phase 7 — Warenkorb, Seiten, Richtlinien
 
 - Cart-Drawer: Produkte mit Bild, Variante, Menge, Preis, Zwischensumme, Hinweis „Versandkosten werden im Checkout berechnet“, Checkout-Button. Kein Upsell, kein Fortschrittsbalken für Gratisversand (nicht entschieden).
-- Seiten-Templates mit eigenem Layout im Theme-Design: `page.faq` (Accordion-Liste), `page.kontakt` (Formular + Kontaktdaten aus Shopify), `page.ueber-uns`, `page.versand`, `page.zahlungsarten`, `page.hilfe` (Übersicht, verlinkt FAQ, Versand, Rückgabe, Kontakt).
+- Seiten-Templates mit eigenem Layout im Theme-Design: `page.entsorgung` (Entsorgung & Rücknahme, Text vom Rechtsdienstleister als Marker), `page.faq` (Accordion-Liste), `page.kontakt` (Formular + Kontaktdaten aus Shopify), `page.ueber-uns`, `page.versand`, `page.zahlungsarten`, `page.hilfe` (Übersicht, verlinkt FAQ, Versand, Rückgabe, Kontakt).
 - Richtlinien-Seiten (Impressum, Datenschutz, AGB, Widerruf, Versand) im Theme-Design angleichen — sie rendern sonst im Default-Layout.
 - Seiteninhalte als Entwürfe in `content/seiten/*.md` ablegen, damit ich sie in Shopify einfügen kann. Alles Unbekannte als Marker. **Keine Rechtstexte schreiben.**
 - 404 und Suchergebnisse im gleichen Design.
@@ -103,13 +104,14 @@ Vorlage exakt nach `docs/REFERENZANALYSE.md`, Abschnitt 5 „Produktseite“: Ka
 ## Phase 8 — Footer
 
 - Spalten: Shop (Kategorien) · Hilfe (Kontakt, Versand, Rückgabe, FAQ, Zahlungsarten) · Ratgeber · Newsletter.
-- Unterzeile: Zahlungsarten-Icons, Rechtliches (Impressum, Datenschutz, AGB, Widerrufsbelehrung), Copyright mit `shop.name`.
+- Unterzeile: Zahlungsarten-Icons, Rechtliches (Impressum, Datenschutz, AGB, Widerrufsbelehrung, Entsorgung & Rücknahme), Hinweis „Alle Preise inkl. MwSt. zzgl. Versandkosten“ mit Link, Copyright mit `shop.name`.
 - Mobil: Spalten als Akkordeon.
 
 ## Phase 9 — Platzhalter-Content und Admin-Anleitung
 
 1. **Stockfotos**: Suche frei lizenzierte Fotos (Unsplash oder Pexels) passend zur Designrichtung — Innenleuchten, Außenleuchten, Schreibtischleuchten, Raumszenen für Hero und Kategorien. Nur direkte Bild-URLs verwenden, die du tatsächlich aufgerufen und geprüft hast. Quelle und Fotograf pro Bild in `docs/BILDQUELLEN.md` festhalten.
 2. **Produkt-CSV** `data/platzhalter-produkte.csv` im Shopify-Produktimport-Format:
+   - Bildrollen pro Produkt so gut es mit Stockfotos geht: freigestellt + Raumbild
    - 18 Produkte: 8 Innen (verschiedene Bauarten), 6 Außen, 4 Schreibtisch
    - Titel klar als Platzhalter erkennbar, z. B. „Muster Pendelleuchte 01“
    - Tag `platzhalter` plus Einsatzort- und Bauart-Tags, Produkttyp gesetzt
@@ -151,7 +153,7 @@ Das liegt fast alles in Shopify Admin. Du bereitest es vor und ergänzt `docs/AD
 
 - `shopify theme check` → keine neuen Offenses.
 - JSON aller Templates valide.
-- Jede Seite gegen die acht Fragen aus `docs/REFERENZANALYSE.md` Abschnitt 6 prüfen.
+- Jede Seite gegen die neun Fragen aus `docs/REFERENZANALYSE.md` Abschnitt 7 prüfen.
 - Visuell prüfen, falls du die Vorschau rendern kannst (Browser-Tool oder `shopify theme dev`): Desktop 1440 und Mobil 375 für Startseite, Collection mit vollem Raster, Produktseite, Warenkorb, Navigation, Filter-Drawer, Suche. Wenn du nicht rendern kannst: ausdrücklich sagen, dass nicht visuell geprüft wurde, und mir eine Liste der Seiten und Breakpoints geben, von denen ich Screenshots schicken soll.
 - Nach `[` in allen Templates und Content-Dateien suchen und jede Fundstelle als bewussten Marker bestätigen oder entfernen.
 
